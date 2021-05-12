@@ -1,0 +1,67 @@
+name: Deploy to production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-test-and-deploy-production:
+    name: Build, test, publish and deploy to production environment on merge to master branch
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup gcloud CLI
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          service_account_email: ${{ secrets.GCP_SA_DATAFABRIKKEN_GCR_EMAIL }}
+          service_account_key: ${{ secrets.GCP_SA_DATAFABRIKKEN_GCR_KEY }}
+
+      - name: Configure docker to use the gcloud command-line tool as a credential helper
+        run: gcloud auth configure-docker eu.gcr.io
+
+      - name: Build Docker image
+        run: docker build . -t eu.gcr.io/datafabrikken-infra/datafabrikken-portal:$GITHUB_SHA -t eu.gcr.io/datafabrikken-infra/datafabrikken-portal:latest --build-arg GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish docker image to Google Cloud
+        run: docker -- push eu.gcr.io/datafabrikken-infra/datafabrikken-portal -a
+
+      - name: Apply Helm template
+        run: |
+          helm repo add datafabrikken https://datadeling.github.io/helm-chart/
+          helm fetch --untar --untardir ./helm datafabrikken/datafabrikken-portal
+          helm template --set DOCKER_IMAGE_NAME="eu.gcr.io/datafabrikken-infra/datafabrikken-portal:$GITHUB_SHA" -f ./helm/datafabrikken-portal/values/prod.yaml ./helm/datafabrikken-portal/ > ./kubectlapply.yaml
+          chmod o+w ./kubectlapply.yaml
+          cat kubectlapply.yaml
+
+      - name: Get kubeconfig file from GKE
+        uses: machine-learning-apps/gke-kubeconfig@master
+        with:
+          application_credentials: ${{ secrets.DATAFABRIKKEN_PROD_AUTODEPLOY }}
+          project_id: datafabrikken-prod
+          location_zone: europe-north1-a
+          cluster_name: datafabrikken-prod
+
+      - name: Deploy to production
+        uses: docker://bitnami/kubectl:latest
+        env:
+          KUBECONFIG: '/github/workspace/.kube/config'
+        with:
+          args: "apply -f ./kubectlapply.yaml --force"
+
+# Consider using dedicated channel
+#      - name: Notify slack
+#        uses: 8398a7/action-slack@v3
+#        with:
+#          mention: 'channel'
+#          if_mention: failure
+#          status: ${{ job.status }}
+#          author_name: 'Application: datafabrikken-portal | Environment: prod'
+#          fields: commit,author,workflow,message
+#        env:
+#          GITHUB_TOKEN: ${{ github.token }}
+#          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+#        if: always()
