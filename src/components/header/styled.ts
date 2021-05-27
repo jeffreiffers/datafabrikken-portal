@@ -47,7 +47,7 @@ const Link = styled(LinkBase)`
     bottom: 0;
     left: 0;
     right: 0;
-    height: 10px;
+    height: 8px;
     width: 0;
     margin: 0 auto;
     background-color: ${({ theme }) => theme.colour.blue.B70};
@@ -135,7 +135,8 @@ const Menu = styled.ul`
   overflow: hidden;
   z-index: 1;
 
-  & > li > a {
+  & > li > * {
+    color: ${({ theme }) => theme.colour.neutral.N60};
     display: block;
     padding: 1em 2em;
     white-space: pre;
