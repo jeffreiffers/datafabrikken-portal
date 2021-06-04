@@ -24,7 +24,6 @@ const Title = styled.h1`
 `;
 
 const MainPage = styled.article`
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   display: flex;
   flex-direction: column;
   height: 500vh;
