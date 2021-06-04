@@ -1,3 +1,5 @@
 import { combineReducers } from 'redux';
 
-export default combineReducers({});
+import DatasetsReducer from '../../../components/with-datasets/redux/reducer';
+
+export default combineReducers({ DatasetsReducer });
