@@ -4,6 +4,7 @@ import nb from '../../l10n/nb.json';
 import nn from '../../l10n/nn.json';
 import en from '../../l10n/en.json';
 
+import type { TextLanguage } from '../../types';
 import type { ChangeLanguageCallback, FormatObject, Formatted } from './types';
 
 import { Language } from './enums';
@@ -37,6 +38,25 @@ class TranslationsService {
     return this.translations.formatString(
       this.translations.getString(key),
       values as any
+    );
+  }
+
+  public getTranslateText(textObj: string | Partial<TextLanguage>) {
+    if (typeof textObj === 'string') {
+      return textObj;
+    }
+
+    if (textObj === null) {
+      return null;
+    }
+
+    return (
+      textObj[this.getLanguage()] ||
+      textObj.nb ||
+      textObj.no ||
+      textObj.nn ||
+      textObj.en ||
+      null
     );
   }
 
