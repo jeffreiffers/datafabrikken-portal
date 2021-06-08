@@ -9,44 +9,24 @@ const Footer = styled.footer`
   flex-direction: column;
   justify-content: center;
   position: relative;
-  min-height: 300px;
-  padding: 4em 0;
-  background: ${theme.colour(Colour.NEUTRAL, 'N60')};
-
-  ${onMobileView} {
-    padding: 3em 0;
-    & {
-      height: calc(55px + (200 - 55) * ((100vw - 320px) / (900 - 320)));
-    }
-  }
-`;
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 1140px;
-  margin: 0 auto;
-
-  ${onMobileView} {
-    & {
-      margin: 0 calc(12px + (32 - 12) * ((100vw - 320px) / (900 - 320)));
-    }
-  }
-`;
-
-const Title = styled.div`
-  font-size: ${theme.fontSize('FS24')};
-  font-weight: 500;
-  color: ${theme.colour(Colour.BLUE, 'B70')};
+  padding: 3em 0;
+  background-color: ${theme.colour(Colour.NEUTRAL, 'N60')};
 `;
 
 const ByLine = styled.div`
-  background: ${theme.colour(Colour.NEUTRAL, 'N50')};
+  background: ${theme.colour(Colour.NEUTRAL, 'N70')};
   color: ${theme.colour(Colour.NEUTRAL, 'N10')};
   display: flex;
   justify-content: center;
-  margin-top: ${theme.spacing('S50')};
   padding: 3em 0;
+
+  & > span {
+    ${onMobileView} {
+      & {
+        margin: 0 calc(12px + (32 - 12) * ((100vw - 320px) / (900 - 320)));
+      }
+    }
+  }
 `;
 
-export default { Footer, Content, Title, ByLine };
+export default { Footer, ByLine };
