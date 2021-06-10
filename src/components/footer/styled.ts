@@ -10,12 +10,10 @@ const Footer = styled.footer`
   justify-content: center;
   position: relative;
   padding: 3em 0;
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N60')};
 `;
 
 const ByLine = styled.div`
   background: ${theme.colour(Colour.NEUTRAL, 'N70')};
-  color: ${theme.colour(Colour.NEUTRAL, 'N10')};
   display: flex;
   justify-content: center;
   padding: 3em 0;

@@ -4,6 +4,7 @@ export default {
   [Token.COLOUR]: {
     [Colour.NEUTRAL]: {
       N0: '#ffffff',
+      N02: '#f5f6f7',
       N10: '#f7f7f7',
       N15: '#eeeff0',
       N20: '#dfe1e2',
@@ -14,10 +15,13 @@ export default {
       N70: '#121619'
     },
     [Colour.BLUE]: {
-      B20: '#f0f3f7',
-      B30: '#d5e1f2',
-      B50: '#335380',
-      B70: '#00dbe9'
+      B04: '#ebf1ff',
+      B14: '#9ebeff',
+      B20: '#70a0ff',
+      B36: '#5a73a6',
+      B44: '#475673',
+      B48: '#3b4559',
+      B52: '#2D3340'
     },
     [Colour.CYAN]: {
       C20: '#f0f6f7',

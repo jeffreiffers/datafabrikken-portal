@@ -24,11 +24,11 @@ const Title = styled.span<Props>`
     switch (variant) {
       case Variant.SECONDARY:
         return css`
-          color: ${theme.colour(Colour.BLUE, 'B70')};
+          color: ${theme.colour(Colour.BLUE, 'B52')};
         `;
       default:
         return css`
-          color: ${theme.colour(Colour.NEUTRAL, 'N10')};
+          color: ${theme.colour(Colour.NEUTRAL, 'N0')};
         `;
     }
   }}

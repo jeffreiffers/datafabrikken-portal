@@ -10,7 +10,7 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   height: 80px;
-  background: ${theme.colour(Colour.NEUTRAL, 'N60')};
+  background: ${theme.colour(Colour.BLUE, 'B52')};
 
   ${onMobileView} {
     & {
@@ -51,7 +51,7 @@ const Link = styled(LinkBase)`
     height: 8px;
     width: 0;
     margin: 0 auto;
-    background-color: ${theme.colour(Colour.BLUE, 'B70')};
+    background-color: ${theme.colour(Colour.BLUE, 'B36')};
   }
   &:hover {
     &:after {
@@ -69,10 +69,6 @@ const NavigationLinks = styled.ul`
 
   & > li {
     flex: 0 0 auto;
-  }
-
-  & > li * {
-    color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   }
 
   & > li:nth-of-type(n + 2) {
@@ -137,7 +133,7 @@ const Menu = styled.ul`
   z-index: 1;
 
   & > li > * {
-    color: ${theme.colour(Colour.NEUTRAL, 'N60')};
+    color: ${theme.colour(Colour.BLUE, 'B52')};
     display: block;
     white-space: pre;
 
@@ -173,7 +169,6 @@ const SkipLink = styled.a`
 `;
 
 const Logo = styled.a`
-  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   font-size: ${theme.fontSize('FS20')};
   font-weight: 600;
 `;

@@ -13,15 +13,15 @@ const routes = {
 
 const Router: FC = () => (
   <BrowserRouter>
-    {isFeatureToggleActive && <Header />}
     <Root>
+      {isFeatureToggleActive && <Header />}
       <Suspense fallback={null}>
         <Switch>
           <Route path='/' component={routes.main} />
         </Switch>
       </Suspense>
+      {isFeatureToggleActive && <Footer />}
     </Root>
-    {isFeatureToggleActive && <Footer />}
   </BrowserRouter>
 );
 
