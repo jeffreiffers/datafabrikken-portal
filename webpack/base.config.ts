@@ -98,6 +98,7 @@ const configuration: Configuration = {
     new HtmlWebpackPlugin({
       template: './src/entrypoints/main/index.html',
       filename: 'index.html',
+      favicon: './src/images/favicon.ico',
       base: '/',
       chunks: ['main']
     })
