@@ -8,11 +8,9 @@ interface Props {}
 
 const Footer: FC<Props> = () => (
   <SC.Footer>
-    <SC.ByLine>
-      <span>
-        <Translation id='footer.byLine' />
-      </span>
-    </SC.ByLine>
+    <span>
+      <Translation id='footer.byLine' />
+    </span>
   </SC.Footer>
 );
 
