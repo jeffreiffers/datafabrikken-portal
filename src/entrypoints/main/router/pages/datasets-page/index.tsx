@@ -6,6 +6,9 @@ import ReactPaginate from 'react-paginate';
 import withDatasets, {
   Props as DatasetsProps
 } from '../../../../../components/with-datasets';
+import withReferenceData, {
+  Props as ReferenceDataProps
+} from '../../../../../components/with-reference-data';
 
 import SC from './styled';
 import Root from '../../../../../components/root';
@@ -16,14 +19,19 @@ import {
   setParameter
 } from '../../../../../utils/location-helper';
 
-interface Props extends RouteComponentProps, DatasetsProps {}
+interface Props
+  extends RouteComponentProps,
+    DatasetsProps,
+    ReferenceDataProps {}
 
 const DatasetsPage: FC<Props> = ({
   datasets,
   totalDatasets,
   datasetPageSize,
   datasetsPage,
-  datasetsActions: { getPagedDatasetsRequested: getPagedDatasets }
+  datasetsActions: { getPagedDatasetsRequested: getPagedDatasets },
+  referenceData: { themes = [], mediatypes = [] },
+  referenceDataActions: { getReferenceDataRequested: getReferenceData }
 }) => {
   const { search } = useLocation();
   const history = useHistory();
@@ -33,6 +41,15 @@ const DatasetsPage: FC<Props> = ({
     const queryParameter = getParameter('q');
     getPagedDatasets({ page: parseInt(pageParameter, 10), q: queryParameter });
   }, [search]);
+
+  useEffect(() => {
+    if (themes.length === 0) {
+      getReferenceData('themes');
+    }
+    if (mediatypes.length === 0) {
+      getReferenceData('mediatypes');
+    }
+  }, []);
 
   const searchSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -76,6 +93,7 @@ const DatasetsPage: FC<Props> = ({
                   description={description}
                   distributions={distribution}
                   accessRight={accessRights}
+                  mediatypes={mediatypes}
                 />
               )
             )}
@@ -104,4 +122,4 @@ const DatasetsPage: FC<Props> = ({
   );
 };
 
-export default compose<FC>(memo, withDatasets)(DatasetsPage);
+export default compose<FC>(memo, withDatasets, withReferenceData)(DatasetsPage);

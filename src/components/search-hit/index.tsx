@@ -5,11 +5,13 @@ import env from '../../env';
 import SC from './styled';
 import TruncatedText from '../truncated-text';
 import Translation from '../translation';
-import RoundedTag from '../rounded-tag';
+import RoundedTag, { Variant } from '../rounded-tag';
 import { AccessRight as AccessRightEnum } from '../../types/enums';
+import { formatSorter, toFormat, toMediaType } from '../../utils/mediatype';
 import type {
   AccessRight,
   Distribution,
+  MediaType,
   Publisher,
   TextLanguage
 } from '../../types';
@@ -23,6 +25,7 @@ interface Props {
   description: TextLanguage;
   distributions?: Distribution[];
   accessRight?: AccessRight;
+  mediatypes?: MediaType[];
 }
 
 function isDatasetOpen(
@@ -41,8 +44,18 @@ const SearchHit: FC<PropsWithChildren<Props>> = ({
   title,
   description,
   distributions = [],
-  accessRight
+  accessRight,
+  mediatypes = []
 }) => {
+  const formats = distributions
+    ?.reduce((previous, current) => {
+      const format = current.format ?? [];
+      return [...previous, ...format];
+    }, [] as string[])
+    .map(toFormat)
+    .sort(formatSorter)
+    .map(toMediaType(mediatypes));
+
   const determineAccessRightLabel = () => {
     switch (accessRight?.code) {
       case (AccessRightEnum.PUBLIC,
@@ -84,6 +97,15 @@ const SearchHit: FC<PropsWithChildren<Props>> = ({
             <span>{determineAccessRightLabel()}</span>
           </RoundedTag>
         )}
+        {[...new Set(formats)].map((format, index) => (
+          <RoundedTag
+            as='div'
+            key={`format-${format}-${index}`}
+            variant={Variant.SECONDARY}
+          >
+            <span>{format}</span>
+          </RoundedTag>
+        ))}
       </SC.Tags>
     </SC.SearchHit>
   );
