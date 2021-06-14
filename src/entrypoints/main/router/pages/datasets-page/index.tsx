@@ -1,4 +1,4 @@
-import React, { FC, FormEvent, memo, useEffect } from 'react';
+import React, { ChangeEvent, FC, FormEvent, memo, useEffect } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, useLocation, useHistory } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
@@ -10,14 +10,30 @@ import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../../../components/with-reference-data';
 
-import SC from './styled';
 import Root from '../../../../../components/root';
+import ThemeBox from '../../../../../components/theme-box';
 import SearchHit from '../../../../../components/search-hit';
 import SearchBar from '../../../../../components/search-bar';
 import {
   getParameter,
+  setMultiselectFilterValue,
   setParameter
 } from '../../../../../utils/location-helper';
+
+import ThemeAgricultureIcon from '../../../../../images/theme-agriculture.inline.svg';
+import ThemeEducationIcon from '../../../../../images/theme-education.inline.svg';
+import ThemeEnvironmentIcon from '../../../../../images/theme-environment.inline.svg';
+import ThemeFinanceIcon from '../../../../../images/theme-finance.inline.svg';
+import ThemeHealthIcon from '../../../../../images/theme-health.inline.svg';
+import ThemeInternationalIcon from '../../../../../images/theme-international.inline.svg';
+import ThemeJusticeIcon from '../../../../../images/theme-justice.inline.svg';
+import ThemePopulationIcon from '../../../../../images/theme-population.inline.svg';
+import ThemePowerIcon from '../../../../../images/theme-power.inline.svg';
+import ThemePublicIcon from '../../../../../images/theme-public.inline.svg';
+import ThemeRegionsIcon from '../../../../../images/theme-regions.inline.svg';
+import ThemeTransportationIcon from '../../../../../images/theme-transportation.inline.svg';
+
+import SC from './styled';
 
 interface Props
   extends RouteComponentProps,
@@ -39,7 +55,15 @@ const DatasetsPage: FC<Props> = ({
   useEffect(() => {
     const pageParameter = getParameter('page');
     const queryParameter = getParameter('q');
-    getPagedDatasets({ page: parseInt(pageParameter, 10), q: queryParameter });
+    const losThemeParameter = getParameter('losTheme');
+    const themeParameter = getParameter('theme');
+
+    getPagedDatasets({
+      page: parseInt(pageParameter, 10),
+      q: queryParameter,
+      losTheme: losThemeParameter,
+      theme: themeParameter
+    });
   }, [search]);
 
   useEffect(() => {
@@ -64,6 +88,12 @@ const DatasetsPage: FC<Props> = ({
     window.scroll(0, 0);
   };
 
+  const handleFilterTheme = ({
+    target: { name, value, checked }
+  }: ChangeEvent<HTMLInputElement>) => {
+    setMultiselectFilterValue(history, name, value, checked);
+  };
+
   return (
     <Root>
       <SC.Container>
@@ -73,6 +103,110 @@ const DatasetsPage: FC<Props> = ({
             <SearchBar placeholder='Søk her' onSubmit={searchSubmit} />
           </SC.SearchContainer>
         </SC.Row>
+        <SC.Themes>
+          <SC.ThemesRow>
+            <ThemeBox
+              handleChange={handleFilterTheme}
+              filterName='theme'
+              value='SOCI'
+              label='Befolkning of samfunn'
+            >
+              <ThemePopulationIcon />
+            </ThemeBox>
+            <ThemeBox
+              handleChange={handleFilterTheme}
+              filterName='losTheme'
+              value='natur-klima-og-miljo/energi'
+              label='Energi'
+            >
+              <ThemePowerIcon />
+            </ThemeBox>
+            <ThemeBox
+              handleChange={handleFilterTheme}
+              filterName='theme'
+              value='GOVI'
+              label='Forvaltning og offentlig sektor'
+            >
+              <ThemePublicIcon />
+            </ThemeBox>
+            <ThemeBox
+              handleChange={handleFilterTheme}
+              filterName='theme'
+              value='HEAL'
+              label='Helse'
+            >
+              <ThemeHealthIcon />
+            </ThemeBox>
+            <ThemeBox
+              handleChange={handleFilterTheme}
+              filterName='theme'
+              value='INTR'
+              label='Internasjonale temaer'
+            >
+              <ThemeInternationalIcon />
+            </ThemeBox>
+          </SC.ThemesRow>
+          <SC.ThemesRow>
+            <ThemeBox
+              handleChange={handleFilterTheme}
+              filterName='theme'
+              value='AGRI'
+              label='Jordbruk, fiskeri, skogbruk og mat'
+            >
+              <ThemeAgricultureIcon />
+            </ThemeBox>
+            <ThemeBox
+              handleChange={handleFilterTheme}
+              filterName='theme'
+              value='JUST'
+              label='Justis, rettssystem og almenn sikkerhet'
+            >
+              <ThemeJusticeIcon />
+            </ThemeBox>
+            <ThemeBox
+              handleChange={handleFilterTheme}
+              filterName='theme'
+              value='ENVI'
+              label='Miljø'
+            >
+              <ThemeEnvironmentIcon />
+            </ThemeBox>
+            <ThemeBox
+              handleChange={handleFilterTheme}
+              filterName='theme'
+              value='REGI'
+              label='Regioner og byer'
+            >
+              <ThemeRegionsIcon />
+            </ThemeBox>
+            <ThemeBox
+              handleChange={handleFilterTheme}
+              filterName='theme'
+              value='TRAN'
+              label='Transport'
+            >
+              <ThemeTransportationIcon />
+            </ThemeBox>
+          </SC.ThemesRow>
+          <SC.ThemesRow>
+            <ThemeBox
+              handleChange={handleFilterTheme}
+              filterName='theme'
+              value='EDUC'
+              label='Utdanning, kultur og sport'
+            >
+              <ThemeEducationIcon />
+            </ThemeBox>
+            <ThemeBox
+              handleChange={handleFilterTheme}
+              filterName='theme'
+              value='ECON'
+              label='Økonomi og finans'
+            >
+              <ThemeFinanceIcon />
+            </ThemeBox>
+          </SC.ThemesRow>
+        </SC.Themes>
         <SC.Row>
           <SC.Aside />
           <SC.SearchList>

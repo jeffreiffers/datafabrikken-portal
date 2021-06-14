@@ -36,13 +36,25 @@ const mapFilters = ({
     filters.push({ _id: id });
   }
   if (los) {
-    filters.push({ los });
+    filters.push({
+      collection: {
+        field: 'losTheme.losPaths.keyword',
+        values: los.split(','),
+        operator: 'OR'
+      }
+    });
+  }
+  if (theme) {
+    filters.push({
+      collection: {
+        field: 'theme.code.keyword',
+        values: theme.split(','),
+        operator: 'OR'
+      }
+    });
   }
   if (orgPath) {
     filters.push({ orgPath });
-  }
-  if (theme) {
-    filters.push({ theme });
   }
   if (opendata) {
     filters.push({ opendata });

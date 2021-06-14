@@ -36,5 +36,8 @@
   "accessRights": {
     "limitedAccess": "Begrenset tilgang"
   },
+  "filter": {
+    "openData": "åpne data"
+  },
   "unknown": "Ukjent"
 }

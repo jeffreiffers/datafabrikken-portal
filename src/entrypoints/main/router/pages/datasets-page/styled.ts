@@ -4,6 +4,8 @@ import ContainerSC from '../../../../../components/container/styled';
 
 import { Colour, theme } from '../../../app/theme';
 
+import ThemeBoxSC from '../../../../../components/theme-box/styled';
+
 const onMobileView = '@media (max-width: 900px)';
 
 const Container = styled(ContainerSC.Container)`
@@ -44,14 +46,47 @@ const Title = styled.h1`
   text-align: center;
 `;
 
+const AsideTitle = styled.div`
+  font-size: ${theme.fontSize('FS16')};
+  margin-bottom: ${theme.spacing('S16')};
+`;
+
+const AsideSubTitle = styled.div`
+  margin-bottom: ${theme.spacing('S6')};
+`;
+
 const SearchList = styled.section`
   padding: 0 ${theme.spacing('S10')};
 `;
 
 const SearchContainer = styled.div`
   flex: 0 0 80%;
-  margin-bottom: ${theme.spacing('S32')};
+  margin-bottom: ${theme.spacing('S20')};
   padding: 0 ${theme.spacing('S10')};
+`;
+
+const Themes = styled.div`
+  margin-bottom: ${theme.spacing('S20')};
+`;
+
+const ThemesRow = styled.div`
+  display: flex;
+  margin-bottom: ${theme.spacing('S6')};
+  padding: 0 ${theme.spacing('S10')};
+  ${ThemeBoxSC.ThemeBox}:first-child {
+    margin-left: 0;
+  }
+  ${ThemeBoxSC.ThemeBox} {
+    margin-left: ${theme.spacing('S6')};
+  }
+  ${onMobileView} {
+    flex-direction: column;
+    margin-bottom: 0;
+    ${ThemeBoxSC.ThemeBox} {
+      margin-left: 0;
+      margin-bottom: ${theme.spacing('S6')};
+    }
+  }
 `;
 
 const Pagination = styled.div`
@@ -81,7 +116,11 @@ export default {
   Row,
   Aside,
   Title,
+  AsideTitle,
+  AsideSubTitle,
   SearchList,
   SearchContainer,
+  Themes,
+  ThemesRow,
   Pagination
 };
