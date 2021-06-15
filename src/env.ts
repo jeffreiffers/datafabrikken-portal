@@ -7,6 +7,7 @@ export default validateEnv(
     ENV: Environment.DEVELOPMENT,
     SEARCH_FULLTEXT_HOST: 'https://search.fellesdatakatalog.digdir.no',
     REFERENCE_DATA_HOST: 'https://data.norge.no',
-    FDK_PORTAL_HOST: 'https://data.norge.no'
+    FDK_PORTAL_HOST: 'https://data.norge.no',
+    CMS_API_HOST: 'https://cms-datafabrikken.digdir.no'
   }
 );

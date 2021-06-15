@@ -11,7 +11,8 @@ const isFeatureToggleActive = localStorage.getItem('DF_TOGGLE');
 
 const routes = {
   [PATHNAME.MAIN]: lazy(() => import('./pages/main-page')),
-  [PATHNAME.DATASETS]: lazy(() => import('./pages/datasets-page'))
+  [PATHNAME.DATASETS]: lazy(() => import('./pages/datasets-page')),
+  [PATHNAME.ABOUT]: lazy(() => import('./pages/article-page'))
 };
 
 const Router: FC = () => (
@@ -25,6 +26,7 @@ const Router: FC = () => (
             path={`${PATHNAME.COMPETENCE_AND_GUIDANCE}${PATHNAME.DATASETS}`}
             component={routes[PATHNAME.DATASETS]}
           />
+          <Route path={PATHNAME.ABOUT} component={routes[PATHNAME.ABOUT]} />
         </Switch>
       </Suspense>
       {isFeatureToggleActive && <Footer />}

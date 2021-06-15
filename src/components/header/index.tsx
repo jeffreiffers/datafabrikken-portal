@@ -12,6 +12,7 @@ import {
   Props as TranslationsProps,
   Language
 } from '../../providers/translations';
+import { PATHNAME } from '../../enums';
 
 interface Props extends TranslationsProps {}
 
@@ -36,7 +37,7 @@ const Header: FC<Props> = ({ translationsService }) => {
         </SC.Logo>
         <SC.NavigationLinks>
           <li>
-            <SC.Link to='#'>
+            <SC.Link to={PATHNAME.ABOUT}>
               <Translation id='header.about' />
             </SC.Link>
           </li>

@@ -121,3 +121,17 @@ export interface Paged<T> {
   hits: T[];
   page: ESPage;
 }
+
+export interface CmsArticleAttributes {
+  title?: string;
+  created?: string;
+  changed?: string;
+  field_ingress?: string;
+  field_modules: any;
+}
+
+export interface CmsArticle extends CmsArticleAttributes {
+  type: string;
+  id: string;
+  links: Partial<Links>;
+}
