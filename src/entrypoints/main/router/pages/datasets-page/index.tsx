@@ -6,7 +6,6 @@ import ReactPaginate from 'react-paginate';
 import withDatasets, {
   Props as DatasetsProps
 } from '../../../../../components/with-datasets';
-import ParallaxContainer from '../../../../../components/parallax-container';
 
 import SC from './styled';
 import SearchHit from '../../../../../components/search-hit';
@@ -49,48 +48,46 @@ const DatasetsPage: FC<Props> = ({
 
   return (
     <SC.DatasetsPage>
-      <ParallaxContainer>
-        <SC.Container>
-          <SC.Title>Finn offentlige data</SC.Title>
-          <SC.Row reverse>
-            <SC.SearchContainer>
-              <SearchBar placeholder='Søk her' onSubmit={searchSubmit} />
-            </SC.SearchContainer>
-          </SC.Row>
-          <SC.Row>
-            <SC.Aside />
-            <SC.SearchList>
-              {datasets?.map(({ id, publisher, title, description }: any) => (
-                <SearchHit
-                  key={id}
-                  id={id}
-                  publisher={publisher}
-                  title={title}
-                  description={description}
+      <SC.Container>
+        <SC.Title>Finn offentlige data</SC.Title>
+        <SC.Row reverse>
+          <SC.SearchContainer>
+            <SearchBar placeholder='Søk her' onSubmit={searchSubmit} />
+          </SC.SearchContainer>
+        </SC.Row>
+        <SC.Row>
+          <SC.Aside />
+          <SC.SearchList>
+            {datasets?.map(({ id, publisher, title, description }: any) => (
+              <SearchHit
+                key={id}
+                id={id}
+                publisher={publisher}
+                title={title}
+                description={description}
+              />
+            ))}
+            {datasets?.length > 0 && (
+              <SC.Pagination>
+                <ReactPaginate
+                  pageCount={totalDatasets / datasetPageSize}
+                  pageRangeDisplayed={2}
+                  marginPagesDisplayed={1}
+                  previousLabel='forrige'
+                  nextLabel='neste'
+                  breakLabel={<span>...</span>}
+                  breakClassName='break-me'
+                  containerClassName='pagination'
+                  onPageChange={onPageChange}
+                  activeClassName='active'
+                  forcePage={datasetsPage}
+                  disableInitialCallback
                 />
-              ))}
-              {datasets?.length > 0 && (
-                <SC.Pagination>
-                  <ReactPaginate
-                    pageCount={totalDatasets / datasetPageSize}
-                    pageRangeDisplayed={2}
-                    marginPagesDisplayed={1}
-                    previousLabel='forrige'
-                    nextLabel='neste'
-                    breakLabel={<span>...</span>}
-                    breakClassName='break-me'
-                    containerClassName='pagination'
-                    onPageChange={onPageChange}
-                    activeClassName='active'
-                    forcePage={datasetsPage}
-                    disableInitialCallback
-                  />
-                </SC.Pagination>
-              )}
-            </SC.SearchList>
-          </SC.Row>
-        </SC.Container>
-      </ParallaxContainer>
+              </SC.Pagination>
+            )}
+          </SC.SearchList>
+        </SC.Row>
+      </SC.Container>
     </SC.DatasetsPage>
   );
 };

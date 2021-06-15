@@ -13,7 +13,6 @@ import { convertToSanitizedHtml } from '../../../../../utils/markdown-converter'
 import withArticle, {
   Props as CmsArticleProps
 } from '../../../../../components/with-cms-article';
-import ParallaxContainer from '../../../../../components/parallax-container';
 
 import SC from './styled';
 import { articleIds } from './articles';
@@ -69,21 +68,19 @@ const ArticlePage: FC<Props> = ({
         <meta name='description' content={ingress} />
         <meta name='og:description' content={ingress} />
       </Helmet>
-      <ParallaxContainer>
-        <SC.Container>
-          <SC.Header>
-            <SC.Title>{title}</SC.Title>
-          </SC.Header>
-          {ingress && (
-            <SC.Ingress
-              dangerouslySetInnerHTML={{
-                __html: convertToSanitizedHtml(ingress)
-              }}
-            />
-          )}
-          {modules?.map((module: any) => renderModule(module))}
-        </SC.Container>
-      </ParallaxContainer>
+      <SC.Container>
+        <SC.Header>
+          <SC.Title>{title}</SC.Title>
+        </SC.Header>
+        {ingress && (
+          <SC.Ingress
+            dangerouslySetInnerHTML={{
+              __html: convertToSanitizedHtml(ingress)
+            }}
+          />
+        )}
+        {modules?.map((module: any) => renderModule(module))}
+      </SC.Container>
     </SC.Article>
   );
 };
