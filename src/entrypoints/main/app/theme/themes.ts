@@ -32,6 +32,11 @@ export default {
   [Token.FONT]: {
     family: 'Rubik, sans-serif',
     size: {
+      FS10: {
+        [Unit.PX]: 10,
+        [Unit.REM]: 1.0,
+        [Unit.EM]: 1.0
+      },
       FS12: {
         [Unit.PX]: 12,
         [Unit.REM]: 1.2,
@@ -94,6 +99,11 @@ export default {
     }
   },
   [Token.SPACING]: {
+    S2: {
+      [Unit.PX]: 2,
+      [Unit.REM]: 0.2,
+      [Unit.EM]: 0.2
+    },
     S4: {
       [Unit.PX]: 4,
       [Unit.REM]: 0.4,
@@ -123,6 +133,11 @@ export default {
       [Unit.PX]: 16,
       [Unit.REM]: 1.6,
       [Unit.EM]: 1.6
+    },
+    S20: {
+      [Unit.PX]: 20,
+      [Unit.REM]: 2.0,
+      [Unit.EM]: 2.0
     },
     S24: {
       [Unit.PX]: 24,
