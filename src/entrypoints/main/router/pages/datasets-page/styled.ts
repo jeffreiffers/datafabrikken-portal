@@ -61,7 +61,6 @@ const Aside = styled.aside`
 
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS24')};
-  font-weight: ${theme.fontWeight('FW300')};
   margin-bottom: ${theme.spacing('S20')};
   text-align: center;
 `;
