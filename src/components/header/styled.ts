@@ -7,6 +7,8 @@ import DropdownMenuBase from '../dropdown-menu';
 const onMobileView = '@media (max-width: 900px)';
 
 const Header = styled.header`
+  background-color: ${theme.colour(Colour.BLUE, 'B52')};
+  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   display: flex;
   align-items: center;
   height: 80px;

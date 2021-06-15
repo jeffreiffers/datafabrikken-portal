@@ -1,39 +1,44 @@
 import styled from 'styled-components';
 
-import { theme } from '../../../app/theme';
+import ContainerSC from '../../../../../components/container/styled';
 
-import ContainerBase from '../../../../../components/container';
+import { theme, Colour } from '../../../app/theme';
 
 const Article = styled.article`
   line-height: 1.5;
+  margin-bottom: ${theme.spacing('S50')};
 `;
 
-const Container = styled(ContainerBase)``;
+const Container = styled(ContainerSC.Container)`
+  padding-top: ${theme.spacing('S50')};
+`;
 
 const Header = styled.section`
-  margin-top: ${theme.spacing('S50')};
+  background-color: ${theme.colour(Colour.BLUE, 'B52')};
+  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  min-height: 50vh;
+  padding-bottom: ${theme.spacing('S20')};
 `;
 
 const Title = styled.h1`
-  font-size: 3.5em;
-  margin-bottom: 1.5em;
+  font-size: ${theme.fontSize('FS32')};
+  margin-bottom: ${theme.spacing('S10')};
 `;
 
 const Ingress = styled.p`
-  font-size: 1.5em;
+  font-size: ${theme.fontSize('FS16')};
   line-height: 1.5;
-  font-weight: ${theme.fontWeight('FW400')};
-  margin-bottom: 1.5em;
+  margin-bottom: ${theme.spacing('S16')};
 `;
 
 const Body = styled.p`
-  font-size: 1.2em;
+  font-size: ${theme.fontSize('FS12')};
 `;
 
 const FullWidthImage = styled.img`
   border-radius: 5px;
   height: auto;
-  margin-bottom: 4em;
+  margin-bottom: ${theme.spacing('S40')};
   max-width: 100%;
 `;
 

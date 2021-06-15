@@ -13,6 +13,7 @@ import { convertToSanitizedHtml } from '../../../../../utils/markdown-converter'
 import withArticle, {
   Props as CmsArticleProps
 } from '../../../../../components/with-cms-article';
+import Root from '../../../../../components/root';
 
 import SC from './styled';
 import { articleIds } from './articles';
@@ -61,27 +62,31 @@ const ArticlePage: FC<Props> = ({
   } = cmsArticle ?? {};
 
   return (
-    <SC.Article>
+    <Root invertColor>
       <Helmet>
         <title>{title}</title>
         <meta property='og:title' content={title} />
         <meta name='description' content={ingress} />
         <meta name='og:description' content={ingress} />
       </Helmet>
-      <SC.Container>
+      <SC.Article>
         <SC.Header>
-          <SC.Title>{title}</SC.Title>
+          <SC.Container>
+            <SC.Title>{title}</SC.Title>
+            {ingress && (
+              <SC.Ingress
+                dangerouslySetInnerHTML={{
+                  __html: convertToSanitizedHtml(ingress)
+                }}
+              />
+            )}
+          </SC.Container>
         </SC.Header>
-        {ingress && (
-          <SC.Ingress
-            dangerouslySetInnerHTML={{
-              __html: convertToSanitizedHtml(ingress)
-            }}
-          />
-        )}
-        {modules?.map((module: any) => renderModule(module))}
-      </SC.Container>
-    </SC.Article>
+        <SC.Container>
+          {modules?.map((module: any) => renderModule(module))}
+        </SC.Container>
+      </SC.Article>
+    </Root>
   );
 };
 

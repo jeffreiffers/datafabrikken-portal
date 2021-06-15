@@ -8,6 +8,7 @@ import withDatasets, {
 } from '../../../../../components/with-datasets';
 
 import SC from './styled';
+import Root from '../../../../../components/root';
 import SearchHit from '../../../../../components/search-hit';
 import SearchBar from '../../../../../components/search-bar';
 import {
@@ -47,7 +48,7 @@ const DatasetsPage: FC<Props> = ({
   };
 
   return (
-    <SC.DatasetsPage>
+    <Root>
       <SC.Container>
         <SC.Title>Finn offentlige data</SC.Title>
         <SC.Row reverse>
@@ -88,7 +89,7 @@ const DatasetsPage: FC<Props> = ({
           </SC.SearchList>
         </SC.Row>
       </SC.Container>
-    </SC.DatasetsPage>
+    </Root>
   );
 };
 

@@ -6,8 +6,6 @@ import { theme } from '../../../app/theme';
 import NatureImage from '../../../../../images/nature.jpg';
 import { AnimateProps, slideInFromLeft } from '../../../../../utils/animations';
 
-import Container from '../../../../../components/container';
-
 const MainPageFeatureToggleOff = styled.article`
   background-image: url(${NatureImage});
   background-repeat: no-repeat;
@@ -21,8 +19,6 @@ const MainPageFeatureToggleOff = styled.article`
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS32')};
 `;
-
-const MainPage = styled(Container)``;
 
 const ParallaxBanner = styled(ParallaxBannerBase)`
   height: 100%;
@@ -54,7 +50,7 @@ const Row = styled.div<AnimateProps>`
     `}
 `;
 
-const MainContent = styled.main`
+const MainContent = styled.div`
   display: flex;
   flex-direction: column;
   & > ${Row} {
@@ -68,7 +64,6 @@ export default {
   MainPageFeatureToggleOff,
   Title,
   ParallaxBanner,
-  MainPage,
   Banner,
   MainContent,
   Row

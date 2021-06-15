@@ -1,11 +1,23 @@
 import React, { memo, FC, PropsWithChildren } from 'react';
 
+import Footer from '../footer';
+
 import SC from './styled';
 
-interface Props {}
+const isFeatureToggleActive = localStorage.getItem('DF_TOGGLE');
 
-const Root: FC<PropsWithChildren<Props>> = ({ children }) => (
-  <SC.Root>{children}</SC.Root>
+interface Props {
+  invertColor?: boolean;
+}
+
+const Root: FC<PropsWithChildren<Props>> = ({
+  invertColor = false,
+  children
+}) => (
+  <SC.Root invertColor={invertColor}>
+    {children}
+    {isFeatureToggleActive && <Footer />}
+  </SC.Root>
 );
 
 export default memo(Root);

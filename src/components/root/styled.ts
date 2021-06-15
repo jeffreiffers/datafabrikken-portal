@@ -2,13 +2,22 @@ import styled from 'styled-components';
 
 import { Colour, theme } from '../../entrypoints/main/app/theme';
 
-const Root = styled.main`
-  background-color: ${theme.colour(Colour.BLUE, 'B52')};
-  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+type RootProps = {
+  invertColor?: boolean;
+};
+
+const Root = styled.main<RootProps>`
+  background-color: ${({ invertColor }) =>
+    invertColor
+      ? theme.colour(Colour.NEUTRAL, 'N0')
+      : theme.colour(Colour.BLUE, 'B52')};
+  color: ${({ invertColor }) =>
+    invertColor
+      ? theme.colour(Colour.BLUE, 'B52')
+      : theme.colour(Colour.NEUTRAL, 'N0')};
   display: flex;
+  flex: 1 0 auto;
   flex-direction: column;
-  flex: 1;
-  height: auto;
   word-break: break-word;
 `;
 

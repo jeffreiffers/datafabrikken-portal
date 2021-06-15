@@ -13,7 +13,8 @@ const Footer = styled.footer`
   }
   ${onMobileView} {
     & {
-      margin: 0 calc(12px + (32 - 12) * ((100vw - 320px) / (900 - 320)));
+      margin-left: calc(12px + (32 - 12) * ((100vw - 320px) / (900 - 320)));
+      margin-right: calc(12px + (32 - 12) * ((100vw - 320px) / (900 - 320)));
     }
   }
 `;
