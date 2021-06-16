@@ -33,6 +33,16 @@ const Ingress = styled.p`
 
 const Body = styled.p`
   font-size: ${theme.fontSize('FS12')};
+  margin-bottom: ${theme.spacing('S10')};
+`;
+
+const Quote = styled.div`
+  border-left: 3px solid ${theme.colour(Colour.BLUE, 'B14')};
+  font-size: ${theme.fontSize('FS20')};
+  font-style: italic;
+  line-height: 1.5;
+  padding: ${theme.spacing('S6')} ${theme.spacing('S10')};
+  margin: ${theme.spacing('S16')} 0;
 `;
 
 const FullWidthImage = styled.img`
@@ -49,5 +59,6 @@ export default {
   Title,
   Ingress,
   Body,
+  Quote,
   FullWidthImage
 };

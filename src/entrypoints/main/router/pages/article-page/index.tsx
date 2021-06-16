@@ -32,6 +32,15 @@ export const renderModule = (module: any) => {
           }}
         />
       );
+    case PARAGRAPH.QUOTE:
+      return (
+        <SC.Quote
+          key={module.id}
+          dangerouslySetInnerHTML={{
+            __html: convertToSanitizedHtml(getParagraphBodyProcessed(module))
+          }}
+        />
+      );
     case PARAGRAPH.IMAGE: {
       const image = getParagraphImage(module);
       return (

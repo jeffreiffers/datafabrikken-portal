@@ -8,5 +8,6 @@ export enum PATHNAME {
 export enum PARAGRAPH {
   BODY = 'paragraph--body',
   IMAGE = 'paragraph--image',
-  VIDEO = 'paragraph--video'
+  VIDEO = 'paragraph--video',
+  QUOTE = 'paragraph--quote'
 }
