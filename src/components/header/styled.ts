@@ -24,10 +24,10 @@ const Header = styled.header`
 const Nav = styled.nav`
   display: flex;
   align-items: center;
-  width: 1140px;
+  width: 1200px;
   margin: 0 auto;
 
-  @media (max-width: 1204px) {
+  @media (max-width: 1251px) {
     & {
       width: 100%;
       margin: 0 ${theme.spacing('S32')};

@@ -8,10 +8,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  width: 1140px;
+  width: 1200px;
   z-index: 10;
 
-  @media (max-width: 1204px) {
+  @media (max-width: 1251px) {
     & {
       width: 100%;
       padding: 0 ${theme.spacing('S32')};
