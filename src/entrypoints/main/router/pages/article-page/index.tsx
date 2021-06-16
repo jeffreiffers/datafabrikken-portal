@@ -44,11 +44,14 @@ export const renderModule = (module: any) => {
     case PARAGRAPH.IMAGE: {
       const image = getParagraphImage(module);
       return (
-        <SC.FullWidthImage
-          key={module.id}
-          alt={image?.meta?.alt}
-          src={image?.download_urls?.canonical}
-        />
+        <SC.ImageWrapper>
+          <SC.Image
+            key={module.id}
+            alt={image?.meta?.alt}
+            src={image?.download_urls?.canonical}
+          />
+          <SC.ImageText>{module.field_image?.field_ingress}</SC.ImageText>
+        </SC.ImageWrapper>
       );
     }
     default:

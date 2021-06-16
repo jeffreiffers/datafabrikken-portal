@@ -45,11 +45,16 @@ const Quote = styled.div`
   margin: ${theme.spacing('S16')} 0;
 `;
 
-const FullWidthImage = styled.img`
-  border-radius: 5px;
-  height: auto;
-  margin-bottom: ${theme.spacing('S40')};
+const ImageWrapper = styled.div`
+  margin-bottom: ${theme.spacing('S16')};
+`;
+
+const Image = styled.img`
   max-width: 100%;
+`;
+
+const ImageText = styled.span`
+  font-size: 0.9rem;
 `;
 
 export default {
@@ -60,5 +65,7 @@ export default {
   Ingress,
   Body,
   Quote,
-  FullWidthImage
+  ImageWrapper,
+  Image,
+  ImageText
 };
