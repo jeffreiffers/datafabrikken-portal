@@ -2,13 +2,19 @@ import styled from 'styled-components';
 
 import { theme } from '../../entrypoints/main/app/theme';
 
+import { Variant } from './enums';
+
 const onMobileView = '@media (max-width: 900px)';
 
-const Container = styled.div`
+type ContainerProps = {
+  variant?: Variant;
+};
+
+const Container = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  width: 1200px;
+  width: ${({ variant }) => (variant ? `${variant}px` : '1200px')};
   z-index: 10;
 
   @media (max-width: 1251px) {

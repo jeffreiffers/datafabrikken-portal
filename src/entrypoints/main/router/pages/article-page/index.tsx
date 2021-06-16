@@ -14,6 +14,7 @@ import withArticle, {
   Props as CmsArticleProps
 } from '../../../../../components/with-cms-article';
 import Root from '../../../../../components/root';
+import { Variant as ContainerVariant } from '../../../../../components/container';
 
 import SC from './styled';
 import { articleIds } from './articles';
@@ -71,7 +72,7 @@ const ArticlePage: FC<Props> = ({
       </Helmet>
       <SC.Article>
         <SC.Header>
-          <SC.Container>
+          <SC.Container variant={ContainerVariant.WIDTH_720}>
             <SC.Title>{title}</SC.Title>
             {ingress && (
               <SC.Ingress
@@ -82,7 +83,7 @@ const ArticlePage: FC<Props> = ({
             )}
           </SC.Container>
         </SC.Header>
-        <SC.Container>
+        <SC.Container variant={ContainerVariant.WIDTH_720}>
           {modules?.map((module: any) => renderModule(module))}
         </SC.Container>
       </SC.Article>
