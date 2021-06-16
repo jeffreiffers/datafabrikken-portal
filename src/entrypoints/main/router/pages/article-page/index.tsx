@@ -44,9 +44,8 @@ export const renderModule = (module: any) => {
     case PARAGRAPH.IMAGE: {
       const image = getParagraphImage(module);
       return (
-        <SC.ImageWrapper>
+        <SC.ImageWrapper key={module.id}>
           <SC.Image
-            key={module.id}
             alt={image?.meta?.alt}
             src={image?.download_urls?.canonical}
           />
@@ -61,11 +60,14 @@ export const renderModule = (module: any) => {
 
 const ArticlePage: FC<Props> = ({
   cmsArticle,
-  cmsArticleActions: { getCmsArticleRequested: getCmsArticle },
+  cmsArticleActions: { getCmsArticleRequested: getCmsArticle, resetCmsArticle },
   location: { pathname }
 }) => {
   useEffect(() => {
     getCmsArticle(articleIds[pathname].nb);
+    return () => {
+      resetCmsArticle();
+    };
   }, []);
 
   const {

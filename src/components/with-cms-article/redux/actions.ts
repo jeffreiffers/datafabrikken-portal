@@ -1,7 +1,8 @@
 import {
   GET_CMS_ARTICLE_REQUESTED,
   GET_CMS_ARTICLE_SUCCEEDED,
-  GET_CMS_ARTICLE_FAILED
+  GET_CMS_ARTICLE_FAILED,
+  RESET_CMS_ARTICLE
 } from './action-types';
 
 import { CmsArticle } from '../../../types';
@@ -30,5 +31,11 @@ export function getCmsArticleFailed(message: string) {
     payload: {
       message
     }
+  };
+}
+
+export function resetCmsArticle() {
+  return {
+    type: RESET_CMS_ARTICLE
   };
 }
