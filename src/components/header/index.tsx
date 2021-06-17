@@ -21,6 +21,11 @@ const Header: FC<Props> = () => (
       </SC.Logo>
       <SC.NavigationLinks>
         <li>
+          <SC.Link to={PATHNAME.MAIN}>
+            <Translation id='header.home' />
+          </SC.Link>
+        </li>
+        <li>
           <SC.Link to={PATHNAME.ABOUT}>
             <Translation id='header.about' />
           </SC.Link>
