@@ -2,7 +2,8 @@ export enum PATHNAME {
   MAIN = '/',
   COMPETENCE_AND_GUIDANCE = '/competence-and-guidance',
   DATASETS = '/datasets',
-  ABOUT = '/about'
+  ABOUT = '/about',
+  NEWS = '/siste-nytt'
 }
 
 export enum PARAGRAPH {

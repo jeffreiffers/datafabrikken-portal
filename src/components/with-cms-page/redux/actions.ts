@@ -2,7 +2,8 @@ import {
   GET_CMS_PAGE_REQUESTED,
   GET_CMS_PAGE_SUCCEEDED,
   GET_CMS_PAGE_FAILED,
-  RESET_CMS_PAGE
+  RESET_CMS_PAGE,
+  GET_CMS_NEWS_ARTICLE_REQUESTED
 } from './action-types';
 
 import { CmsArticle } from '../../../types';
@@ -37,5 +38,14 @@ export function getCmsPageFailed(message: string) {
 export function resetCmsPage() {
   return {
     type: RESET_CMS_PAGE
+  };
+}
+
+export function getCmsNewsArticleRequested(id: string) {
+  return {
+    type: GET_CMS_NEWS_ARTICLE_REQUESTED,
+    payload: {
+      id
+    }
   };
 }
