@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { Link as LinkBase } from 'react-router-dom';
 
 import { theme, Colour } from '../../entrypoints/main/app/theme';
-import DropdownMenuBase from '../dropdown-menu';
 
 import BetaLogoBase from '../../images/tag-beta-desktop.inline.svg';
 
@@ -86,67 +85,6 @@ const NavigationLinks = styled.ul`
   }
 `;
 
-const LanguageMenu = styled(DropdownMenuBase)`
-  display: flex;
-  margin-left: auto;
-`;
-
-const ButtonItem = styled.button`
-  width: 100%;
-  height: 100%;
-  padding: ${theme.spacing('S10')} ${theme.spacing('S16')};
-  border: none;
-  background: none;
-  text-align: left;
-  white-space: pre;
-  cursor: pointer;
-
-  &:hover {
-    background: ${theme.colour(Colour.NEUTRAL, 'N10')};
-  }
-
-  ${onMobileView} {
-    padding: 14px 28px 14px 28px;
-  }
-`;
-
-const MenuButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  appearance: none;
-  background: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
-
-  &:after {
-    content: '\\25BC';
-    font-size: 10px;
-    margin-top: 1px;
-    margin-left: ${theme.spacing('S6')};
-  }
-`;
-
-const Menu = styled.ul`
-  position: relative;
-  border-radius: 5px;
-  background: ${theme.colour(Colour.NEUTRAL, 'N0')};
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  z-index: 1;
-
-  & > li > * {
-    color: ${theme.colour(Colour.BLUE, 'B52')};
-    display: block;
-    white-space: pre;
-
-    &:hover {
-      background: ${theme.colour(Colour.NEUTRAL, 'N10')};
-    }
-  }
-`;
-
 const SkipLink = styled.a`
   border: 0;
   position: absolute;
@@ -192,10 +130,6 @@ export default {
   Header,
   Nav,
   NavigationLinks,
-  LanguageMenu,
-  ButtonItem,
-  MenuButton,
-  Menu,
   Link,
   SkipLink,
   Logo,
