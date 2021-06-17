@@ -1,8 +1,8 @@
 import { all } from 'redux-saga/effects';
 
-import cmsArticleSaga from '../../../components/with-cms-article/redux/saga';
+import cmsPageSaga from '../../../components/with-cms-page/redux/saga';
 import datasetsSaga from '../../../components/with-datasets/redux/saga';
 
 export default function* saga() {
-  yield all([cmsArticleSaga(), datasetsSaga()]);
+  yield all([cmsPageSaga(), datasetsSaga()]);
 }

@@ -10,9 +10,9 @@ import {
 } from '../../../../../utils/drupal-values';
 import { convertToSanitizedHtml } from '../../../../../utils/markdown-converter';
 
-import withArticle, {
+import withPage, {
   Props as CmsArticleProps
-} from '../../../../../components/with-cms-article';
+} from '../../../../../components/with-cms-page';
 import Root from '../../../../../components/root';
 import { Variant as ContainerVariant } from '../../../../../components/container';
 
@@ -59,14 +59,14 @@ export const renderModule = (module: any) => {
 };
 
 const ArticlePage: FC<Props> = ({
-  cmsArticle,
-  cmsArticleActions: { getCmsArticleRequested: getCmsArticle, resetCmsArticle },
+  cmsPage,
+  cmsPageActions: { getCmsPageRequested: getCmsPage, resetCmsPage },
   location: { pathname }
 }) => {
   useEffect(() => {
-    getCmsArticle(articleIds[pathname].nb);
+    getCmsPage(articleIds[pathname].nb);
     return () => {
-      resetCmsArticle();
+      resetCmsPage();
     };
   }, []);
 
@@ -74,7 +74,7 @@ const ArticlePage: FC<Props> = ({
     title,
     field_ingress: ingress,
     field_modules: modules
-  } = cmsArticle ?? {};
+  } = cmsPage ?? {};
 
   return (
     <Root invertColor>
@@ -105,4 +105,4 @@ const ArticlePage: FC<Props> = ({
   );
 };
 
-export default compose<FC>(memo, withArticle)(ArticlePage);
+export default compose<FC>(memo, withPage)(ArticlePage);

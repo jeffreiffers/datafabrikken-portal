@@ -7,19 +7,19 @@ import * as actions from './redux/actions';
 import type { CmsArticle } from '../../types';
 
 export interface Props {
-  cmsArticle: CmsArticle | null;
-  cmsArticleActions: typeof actions;
+  cmsPage: CmsArticle | null;
+  cmsPageActions: typeof actions;
 }
 
-const withNewsArticle = (Component: ComponentType<any>) => {
+const withCmsPage = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
-    cmsArticle: state.CmsArticleReducer.get('article')?.toJS() ?? null
+    cmsPage: state.CmsPageReducer.get('page')?.toJS() ?? null
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({
-    cmsArticleActions: bindActionCreators(actions, dispatch)
+    cmsPageActions: bindActionCreators(actions, dispatch)
   });
 
   return compose<FC>(
@@ -28,4 +28,4 @@ const withNewsArticle = (Component: ComponentType<any>) => {
   )(WrappedComponent);
 };
 
-export default withNewsArticle;
+export default withCmsPage;
