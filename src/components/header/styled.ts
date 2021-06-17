@@ -43,7 +43,7 @@ const Nav = styled.nav`
 `;
 
 const Link = styled(LinkBase)`
-  padding-bottom: ${theme.spacing('S6')};
+  padding-bottom: ${theme.spacing('S4')};
   position: relative;
   &:after {
     position: absolute;
@@ -51,10 +51,10 @@ const Link = styled(LinkBase)`
     bottom: 0;
     left: 0;
     right: 0;
-    height: 8px;
+    height: 4px;
     width: 0;
     margin: 0 auto;
-    background-color: ${theme.colour(Colour.BLUE, 'B36')};
+    background-color: ${theme.colour(Colour.BLUE, 'B20')};
   }
   &:hover {
     &:after {
