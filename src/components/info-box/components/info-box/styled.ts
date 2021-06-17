@@ -2,17 +2,45 @@ import styled from 'styled-components';
 
 import { theme, Colour } from '../../../../entrypoints/main/app/theme';
 
-const InfoBox = styled.div`
-  background-color: ${theme.colour(Colour.BLUE, 'B44')};
+import InfoBoxTitleSC from '../info-box-title/styled';
+
+const onMobileView = '@media (max-width: 900px)';
+
+type infoBoxProps = {
+  invertColor?: boolean;
+};
+const InfoBox = styled.a<infoBoxProps>`
+  background-color: ${({ invertColor }) =>
+    invertColor
+      ? theme.colour(Colour.NEUTRAL, 'N0')
+      : theme.colour(Colour.BLUE, 'B48')};
+  color: ${({ invertColor }) =>
+    invertColor
+      ? theme.colour(Colour.BLUE, 'B52')
+      : theme.colour(Colour.NEUTRAL, 'N0')};
   box-shadow: 0 2px 4px ${theme.colour(Colour.NEUTRAL, 'N60')};
   display: flex;
   flex: 0 1 49%;
   flex-direction: column;
-  padding: ${theme.spacing('S20')};
+  margin-bottom: ${theme.spacing('S20')};
+  padding: ${theme.spacing('S24')};
   &:hover {
-    background-color: ${theme.colour(Colour.BLUE, 'B48')};
-    transition: background-color 150ms cubic-bezier(0.645, 0.045, 0.355, 1) 0.1s;
+    ${InfoBoxTitleSC.Title} {
+      &:after {
+        transition: padding-left 150ms ease-out 100ms;
+        padding-left: ${theme.spacing('S2')};
+      }
+    }
+  }
+  ${onMobileView} {
+    flex-basis: 100%;
   }
 `;
 
-export default { InfoBox };
+const Date = styled.span`
+  color: ${theme.colour(Colour.BLUE, 'B20')};
+  font-size: ${theme.fontSize('FS10')};
+  margin-bottom: ${theme.spacing('S6')};
+`;
+
+export default { InfoBox, Date };
