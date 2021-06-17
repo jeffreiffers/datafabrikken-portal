@@ -10,7 +10,8 @@
     "mainContent": "Til hovedinnhold",
     "home": "Hjem",
     "about": "Om Datafabrikken",
-    "findData": "Finn data"
+    "findData": "Finn data",
+    "news": "Siste nytt"
   },
   "footer": {
     "title": "Følg med på Datafabrikken",
@@ -24,6 +25,9 @@
     "title": "Finn data",
     "findData": "Søk etter data",
     "findDataText": "Rett til søkesiden."
+  },
+  "news": {
+    "title": "Siste nytt om Datafabrikken"
   },
   "owner": "Eier"
 }

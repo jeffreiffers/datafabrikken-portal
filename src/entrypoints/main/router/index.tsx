@@ -14,6 +14,7 @@ const routes = {
   [PATHNAME.COMPETENCE_AND_GUIDANCE]: lazy(
     () => import('./pages/find-data-page')
   ),
+  [PATHNAME.NEWS]: lazy(() => import('./pages/news-page')),
   NEWS_ARTICLE: lazy(() => import('./pages/news-article-page'))
 };
 
@@ -37,6 +38,7 @@ const Router: FC = () => (
           path={`${PATHNAME.NEWS}/:newsArticleId`}
           component={routes.NEWS_ARTICLE}
         />
+        <Route path={PATHNAME.NEWS} component={routes[PATHNAME.NEWS]} />
       </Switch>
     </Suspense>
   </BrowserRouter>
