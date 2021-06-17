@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import ContainerSC from '../../../../../components/container/styled';
+import ContainerSC from '../container/styled';
 
-import { theme, Colour } from '../../../app/theme';
+import { theme, Colour } from '../../entrypoints/main/app/theme';
 
 const Article = styled.article`
   line-height: 1.5;
