@@ -5,7 +5,7 @@ import {
   RESET_CMS_PAGE
 } from './action-types';
 
-import { CmsArticle as CmsPage } from '../../../types';
+import { CmsArticle } from '../../../types';
 
 export function getCmsPageRequested(id: string) {
   return {
@@ -16,7 +16,7 @@ export function getCmsPageRequested(id: string) {
   };
 }
 
-export function getCmsPageSucceeded(page: CmsPage) {
+export function getCmsPageSucceeded(page: Partial<CmsArticle>) {
   return {
     type: GET_CMS_PAGE_SUCCEEDED,
     payload: {

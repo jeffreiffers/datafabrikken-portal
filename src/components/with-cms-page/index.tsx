@@ -7,7 +7,7 @@ import * as actions from './redux/actions';
 import type { CmsArticle } from '../../types';
 
 export interface Props {
-  cmsPage: CmsArticle | null;
+  cmsPage: Partial<CmsArticle> | null;
   cmsPageActions: typeof actions;
 }
 

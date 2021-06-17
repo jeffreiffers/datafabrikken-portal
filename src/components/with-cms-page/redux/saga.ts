@@ -8,7 +8,7 @@ import {
   extractPageData
 } from '../../../services/api/cms-api/page';
 
-import type { CmsArticle as CmsPage } from '../../../types';
+import type { CmsArticle } from '../../../types';
 
 function* getCmsPageRequested({
   payload: { id }
@@ -17,7 +17,9 @@ function* getCmsPageRequested({
     const data: Record<string, any> = yield call(getPageEntity, id);
 
     if (data) {
-      yield put(actions.getCmsPageSucceeded(extractPageData(data) as CmsPage));
+      yield put(
+        actions.getCmsPageSucceeded(extractPageData(data) as CmsArticle)
+      );
     } else {
       yield put(actions.getCmsPageFailed(''));
     }

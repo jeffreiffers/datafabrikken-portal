@@ -122,16 +122,22 @@ export interface Paged<T> {
   page: ESPage;
 }
 
-export interface CmsArticleAttributes {
-  title?: string;
-  created?: string;
-  changed?: string;
-  field_ingress?: string;
-  field_modules: any;
+export interface Link {
+  href: string;
+}
+export interface Links {
+  next: Link;
+  self: Link;
 }
 
-export interface CmsArticle extends CmsArticleAttributes {
-  type: string;
+export interface CmsArticle {
   id: string;
+  type: string;
+  created: string;
+  changed: string;
+  title: string;
+  field_ingress: string;
+  field_modules: any;
+  langcode: string;
   links: Partial<Links>;
 }
