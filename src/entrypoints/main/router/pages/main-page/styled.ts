@@ -60,11 +60,30 @@ const MainContent = styled.div`
   }
 `;
 
+const NewsRow = styled.div<AnimateProps>`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15em;
+  visibility: hidden;
+  opacity: 0;
+  will-change: transform, opacity, visibility;
+  animation-delay: 200ms;
+  ${({ animate }) =>
+    animate &&
+    css`
+      animation-duration: 700ms;
+      animation-timing-function: ease-out;
+      animation-fill-mode: forwards;
+      animation-name: ${slideInFromLeft};
+    `}
+`;
+
 export default {
   MainPageFeatureToggleOff,
   Title,
   ParallaxBanner,
   Banner,
   MainContent,
-  Row
+  Row,
+  NewsRow
 };

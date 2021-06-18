@@ -1,8 +1,7 @@
-import React, { memo, FC } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import React, { memo, FC, useEffect } from 'react';
+import { compose } from 'redux';
+import { Link as RouterLink, RouteComponentProps } from 'react-router-dom';
 import { InView } from 'react-intersection-observer';
-
-import SC from './styled';
 
 import Root from '../../../../../components/root';
 import Container from '../../../../../components/container';
@@ -14,14 +13,33 @@ import {
   SC as ContentBoxSC,
   TitleVariant
 } from '../../../../../components/content-box';
+import {
+  InfoBox,
+  InfoBoxBody,
+  InfoBoxTitle,
+  SC as InfoBoxSC
+} from '../../../../../components/info-box';
 import Translation from '../../../../../components/translation';
+import withNews, {
+  Props as CmsNewsProps
+} from '../../../../../components/with-cms-news';
+import { PATHNAME } from '../../../../../enums';
+import { dateStringToDate, formatDate } from '../../../../../utils/date';
+
+import SC from './styled';
 
 const isFeatureToggleActive = localStorage.getItem('DF_TOGGLE');
 
-interface Props extends RouteComponentProps {}
+interface Props extends RouteComponentProps, CmsNewsProps {}
 
-const MainPage: FC<Props> = () =>
-  isFeatureToggleActive ? (
+const MainPage: FC<Props> = ({
+  cmsNews,
+  cmsNewsActions: { getNewsRequested: getNews }
+}) => {
+  useEffect(() => {
+    getNews({ pageLimit: 2 });
+  }, []);
+  return isFeatureToggleActive ? (
     <ParallaxContainer>
       <Root>
         <Container>
@@ -92,6 +110,29 @@ const MainPage: FC<Props> = () =>
                 </SC.Row>
               )}
             </InView>
+            <InView triggerOnce threshold={0.1}>
+              {({ inView, ref }) => (
+                <SC.NewsRow ref={ref} animate={inView}>
+                  {cmsNews?.map(
+                    ({ id, created, title, field_ingress: ingress }) => (
+                      <InfoBox
+                        key={id}
+                        as={RouterLink}
+                        to={`${PATHNAME.NEWS}/${id}`}
+                      >
+                        <InfoBoxSC.InfoBox.Date>
+                          {created && formatDate(dateStringToDate(created))}
+                        </InfoBoxSC.InfoBox.Date>
+                        <InfoBoxTitle>
+                          <h2>{title}</h2>
+                        </InfoBoxTitle>
+                        <InfoBoxBody>{ingress}</InfoBoxBody>
+                      </InfoBox>
+                    )
+                  )}
+                </SC.NewsRow>
+              )}
+            </InView>
           </SC.MainContent>
         </Container>
       </Root>
@@ -103,5 +144,6 @@ const MainPage: FC<Props> = () =>
       </SC.Title>
     </SC.MainPageFeatureToggleOff>
   );
+};
 
-export default memo(MainPage);
+export default compose<FC>(memo, withNews)(MainPage);
