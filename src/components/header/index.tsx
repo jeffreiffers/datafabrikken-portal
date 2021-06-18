@@ -31,7 +31,7 @@ const Header: FC<Props> = () => (
           </SC.Link>
         </li>
         <li>
-          <SC.Link to={PATHNAME.COMPETENCE_AND_GUIDANCE}>
+          <SC.Link to={PATHNAME.FIND_DATA}>
             <Translation id='header.findData' />
           </SC.Link>
         </li>

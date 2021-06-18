@@ -11,9 +11,7 @@ const routes = {
   [PATHNAME.MAIN]: lazy(() => import('./pages/main-page')),
   [PATHNAME.DATASETS]: lazy(() => import('./pages/datasets-page')),
   [PATHNAME.ABOUT]: lazy(() => import('./pages/article-page')),
-  [PATHNAME.COMPETENCE_AND_GUIDANCE]: lazy(
-    () => import('./pages/find-data-page')
-  ),
+  [PATHNAME.FIND_DATA]: lazy(() => import('./pages/find-data-page')),
   [PATHNAME.NEWS]: lazy(() => import('./pages/news-page')),
   NEWS_ARTICLE: lazy(() => import('./pages/news-article-page'))
 };
@@ -25,13 +23,13 @@ const Router: FC = () => (
       <Switch>
         <Route exact path={PATHNAME.MAIN} component={routes[PATHNAME.MAIN]} />
         <Route
-          path={`${PATHNAME.COMPETENCE_AND_GUIDANCE}${PATHNAME.DATASETS}`}
+          path={`${PATHNAME.FIND_DATA}${PATHNAME.DATASETS}`}
           component={routes[PATHNAME.DATASETS]}
         />
         <Route path={PATHNAME.ABOUT} component={routes[PATHNAME.ABOUT]} />
         <Route
-          path={PATHNAME.COMPETENCE_AND_GUIDANCE}
-          component={routes[PATHNAME.COMPETENCE_AND_GUIDANCE]}
+          path={PATHNAME.FIND_DATA}
+          component={routes[PATHNAME.FIND_DATA]}
         />
         <Route
           exact

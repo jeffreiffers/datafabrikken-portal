@@ -27,7 +27,7 @@ const FindDataPage: FC<Props> = () => (
         <SC.Content>
           <InfoBox
             as={RouterLink}
-            to={`${PATHNAME.COMPETENCE_AND_GUIDANCE}${PATHNAME.DATASETS}`}
+            to={`${PATHNAME.FIND_DATA}${PATHNAME.DATASETS}`}
           >
             <InfoBoxTitle>
               <h2>
