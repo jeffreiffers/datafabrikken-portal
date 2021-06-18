@@ -18,7 +18,11 @@ const InfoBox = styled.a<infoBoxProps>`
     invertColor
       ? theme.colour(Colour.BLUE, 'B52')
       : theme.colour(Colour.NEUTRAL, 'N0')};
-  box-shadow: 0 2px 4px ${theme.colour(Colour.NEUTRAL, 'N60')};
+  box-shadow: 0 2px 4px
+    ${({ invertColor }) =>
+      invertColor
+        ? theme.colour(Colour.NEUTRAL, 'N30')
+        : theme.colour(Colour.NEUTRAL, 'N60')};
   display: flex;
   flex: 0 1 49%;
   flex-direction: column;
