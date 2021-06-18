@@ -16,7 +16,6 @@ const Container = styled(ContainerSC.Container)`
 const Header = styled.section`
   background-color: ${theme.colour(Colour.BLUE, 'B52')};
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
-  min-height: 50vh;
   padding-bottom: ${theme.spacing('S20')};
 `;
 
