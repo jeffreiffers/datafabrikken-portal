@@ -10,6 +10,7 @@ import { convertToSanitizedHtml } from '../../utils/markdown-converter';
 
 import Root from '../root';
 import { Variant as ContainerVariant } from '../container';
+import { InfoBox, InfoBoxBody, InfoBoxTitle } from '../info-box';
 
 import SC from './styled';
 import { CmsArticle } from '../../types';
@@ -24,6 +25,7 @@ export const renderModule = (module: any) => {
       return (
         <SC.Body
           key={module.id}
+          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: convertToSanitizedHtml(getParagraphBodyProcessed(module))
           }}
@@ -33,6 +35,7 @@ export const renderModule = (module: any) => {
       return (
         <SC.Quote
           key={module.id}
+          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: convertToSanitizedHtml(getParagraphBodyProcessed(module))
           }}
@@ -48,6 +51,23 @@ export const renderModule = (module: any) => {
           />
           <SC.ImageText>{module.field_image?.field_ingress}</SC.ImageText>
         </SC.ImageWrapper>
+      );
+    }
+    case PARAGRAPH.INFO_BOX: {
+      return (
+        <InfoBox key={module.id} href={module.field_link?.uri} invertColor>
+          <InfoBoxTitle>
+            <h2>{module.field_link?.title}</h2>
+          </InfoBoxTitle>
+          <InfoBoxBody>
+            <div
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: convertToSanitizedHtml(module.field_body?.processed)
+              }}
+            />
+          </InfoBoxBody>
+        </InfoBox>
       );
     }
     default:
@@ -73,6 +93,7 @@ const Article: FC<Props> = ({ article }) => {
             <SC.Title>{title}</SC.Title>
             {ingress && (
               <SC.Ingress
+                // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
                   __html: convertToSanitizedHtml(ingress)
                 }}
