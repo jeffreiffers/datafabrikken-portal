@@ -3,7 +3,8 @@ export enum PATHNAME {
   FIND_DATA = '/finn-data',
   DATASETS = '/sok-datasett',
   ABOUT = '/om-datafabrikken',
-  NEWS = '/siste-nytt'
+  NEWS = '/siste-nytt',
+  DATA_COMMUNITY = '/datalandsbyen'
 }
 
 export enum PARAGRAPH {

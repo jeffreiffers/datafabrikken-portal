@@ -40,6 +40,11 @@ const Header: FC<Props> = () => (
             <Translation id='header.news' />
           </SC.Link>
         </li>
+        <li>
+          <SC.Link to={PATHNAME.DATA_COMMUNITY}>
+            <Translation id='header.community' />
+          </SC.Link>
+        </li>
       </SC.NavigationLinks>
     </SC.Nav>
   </SC.Header>
