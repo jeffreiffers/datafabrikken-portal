@@ -1,8 +1,8 @@
 export enum PATHNAME {
   MAIN = '/',
-  FIND_DATA = '/competence-and-guidance',
-  DATASETS = '/datasets',
-  ABOUT = '/about',
+  FIND_DATA = '/finn-data',
+  DATASETS = '/sok-datasett',
+  ABOUT = '/om-datafabrikken',
   NEWS = '/siste-nytt'
 }
 
