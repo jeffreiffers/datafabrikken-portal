@@ -10,5 +10,6 @@ export enum PARAGRAPH {
   BODY = 'paragraph--body',
   IMAGE = 'paragraph--image',
   VIDEO = 'paragraph--video',
-  QUOTE = 'paragraph--quote'
+  QUOTE = 'paragraph--quote',
+  INFO_BOX = 'paragraph--law_text'
 }
