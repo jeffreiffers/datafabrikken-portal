@@ -1,8 +1,14 @@
-import React, { ComponentType, FC, memo, PropsWithChildren } from 'react';
+import React, {
+  ComponentType,
+  ComponentPropsWithoutRef,
+  FC,
+  memo,
+  PropsWithChildren
+} from 'react';
 
 import SC from './styled';
 
-interface Props {
+interface Props extends ComponentPropsWithoutRef<'a'> {
   invertColor?: boolean;
   to?: string;
   as?: keyof JSX.IntrinsicElements | ComponentType<any>;
