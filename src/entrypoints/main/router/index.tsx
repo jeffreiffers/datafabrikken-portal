@@ -19,6 +19,7 @@ const routes = {
   [PATHNAME.GUIDEANCE_AND_COMPETENCE]: lazy(
     () => import('./pages/article-page')
   ),
+  [PATHNAME.CONTACT]: lazy(() => import('./pages/contact-page')),
   ARTICLE: lazy(() => import('./pages/article-page'))
 };
 
@@ -59,6 +60,11 @@ const Router: FC = () => (
           exact
           path={`${PATHNAME.NEWS}/:newsArticleId`}
           component={routes.NEWS_ARTICLE}
+        />
+        <Route
+          exact
+          path={PATHNAME.CONTACT}
+          component={routes[PATHNAME.CONTACT]}
         />
         <Route
           exact

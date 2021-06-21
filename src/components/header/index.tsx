@@ -41,6 +41,11 @@ const Header: FC<Props> = () => (
           </SC.Link>
         </li>
         <li>
+          <SC.Link to={PATHNAME.CONTACT}>
+            <Translation id='header.contact' />
+          </SC.Link>
+        </li>
+        <li>
           <SC.Link to={PATHNAME.DATA_COMMUNITY}>
             <Translation id='header.community' />
           </SC.Link>

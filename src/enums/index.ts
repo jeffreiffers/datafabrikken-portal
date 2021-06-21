@@ -7,7 +7,8 @@ export enum PATHNAME {
   DATA_COMMUNITY = '/datalandsbyen',
   DATA_SOURCES = '/datakilder',
   GUIDEANCE_AND_COMPETENCE = '/veiledere-og-kompetanse',
-  PRIVATE_SECTOR = '/privat-sektor'
+  PRIVATE_SECTOR = '/privat-sektor',
+  CONTACT = '/kontakt'
 }
 
 export enum PARAGRAPH {

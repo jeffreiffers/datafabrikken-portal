@@ -56,6 +56,16 @@ const Body = styled.div`
       }
     }
   }
+  & > div {
+    & > div {
+      margin-bottom: ${theme.spacing('S10')};
+      & > * > a {
+        align-items: center;
+        border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B14')};
+        display: inline-flex;
+      }
+    }
+  }
 `;
 
 const Quote = styled.div`
