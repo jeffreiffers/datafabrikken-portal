@@ -14,6 +14,7 @@ const Title = styled.h1`
 
 const Content = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 `;
 
