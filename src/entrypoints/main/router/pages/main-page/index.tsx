@@ -10,8 +10,7 @@ import {
   ContentBox,
   ContentBoxHeader,
   ContextBoxBody,
-  SC as ContentBoxSC,
-  TitleVariant
+  SC as ContentBoxSC
 } from '../../../../../components/content-box';
 import {
   InfoBox,
@@ -23,22 +22,37 @@ import Translation from '../../../../../components/translation';
 import withNews, {
   Props as CmsNewsProps
 } from '../../../../../components/with-cms-news';
+import withPage, {
+  Props as CmsPageProps
+} from '../../../../../components/with-cms-page';
+
 import { PATHNAME } from '../../../../../enums';
 import { dateStringToDate, formatDate } from '../../../../../utils/date';
+import { convertToSanitizedHtml } from '../../../../../utils/markdown-converter';
 
 import SC from './styled';
 
 const isFeatureToggleActive = localStorage.getItem('DF_TOGGLE');
 
-interface Props extends RouteComponentProps, CmsNewsProps {}
+const articleId = 'a8ba0c51-4693-401c-b2c8-61dfe144cc83';
+
+interface Props extends RouteComponentProps, CmsNewsProps, CmsPageProps {}
 
 const MainPage: FC<Props> = ({
   cmsNews,
-  cmsNewsActions: { getNewsRequested: getNews }
+  cmsNewsActions: { getNewsRequested: getNews },
+  cmsPage,
+  cmsPageActions: { getCmsPageRequested: getCmsPage, resetCmsPage }
 }) => {
   useEffect(() => {
     getNews({ pageLimit: 2 });
+    getCmsPage(articleId);
+    return () => {
+      resetCmsPage();
+    };
   }, []);
+  const modules = cmsPage?.field_modules ?? [];
+  const firstElement = modules?.shift();
   return isFeatureToggleActive ? (
     <ParallaxContainer>
       <Root>
@@ -48,68 +62,48 @@ const MainPage: FC<Props> = ({
               <ContentBox>
                 <ContentBoxHeader>
                   <ContentBoxSC.ContentBoxHeader.Title>
-                    Her bygges <b>Datafabrikken</b>.
+                    {firstElement?.field_title}
                   </ContentBoxSC.ContentBoxHeader.Title>
                 </ContentBoxHeader>
-                <ContentBoxHeader>
-                  <ContentBoxSC.ContentBoxHeader.Title>
-                    Vi gjør det enklere for deg å dele, finne og anvende data.
-                  </ContentBoxSC.ContentBoxHeader.Title>
-                </ContentBoxHeader>
+                <ContextBoxBody>
+                  <div
+                    // eslint-disable-next-line react/no-danger
+                    dangerouslySetInnerHTML={{
+                      __html: convertToSanitizedHtml(
+                        firstElement?.field_body?.processed
+                      )
+                    }}
+                  />
+                </ContextBoxBody>
               </ContentBox>
             </SC.Row>
           </SC.Banner>
           <SC.MainContent>
-            <InView triggerOnce threshold={0.1}>
-              {({ inView, ref }) => (
-                <SC.Row ref={ref} animate={inView}>
-                  <ContentBox>
-                    <ContentBoxHeader>
-                      <ContentBoxSC.ContentBoxHeader.Title>
-                        <b>Datafabrikken skapes i samabeid med brukerne. </b>
-                      </ContentBoxSC.ContentBoxHeader.Title>
-                      <ContentBoxSC.ContentBoxHeader.Title
-                        variant={TitleVariant.SECONDARY}
-                      >
-                        <b>Derfor trenger vi deg!</b>
-                      </ContentBoxSC.ContentBoxHeader.Title>
-                      <ContextBoxBody>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the industrys
-                        standard dummy text ever since the 1500s, when an
-                        unknown printer took a galley of type and scrambled it
-                        to make a type specimen book.
-                      </ContextBoxBody>
-                    </ContentBoxHeader>
-                  </ContentBox>
-                </SC.Row>
-              )}
-            </InView>
-            <InView triggerOnce threshold={0.1}>
-              {({ inView, ref }) => (
-                <SC.Row ref={ref} animate={inView}>
-                  <ContentBox>
-                    <ContentBoxHeader>
-                      <ContentBoxSC.ContentBoxHeader.Title
-                        variant={TitleVariant.SECONDARY}
-                      >
-                        <b>Leter du etter data? </b>
-                      </ContentBoxSC.ContentBoxHeader.Title>
-                      <ContentBoxSC.ContentBoxHeader.Title>
-                        <b>Datafabrikken gjør det enkelt for deg.</b>
-                      </ContentBoxSC.ContentBoxHeader.Title>
-                      <ContextBoxBody>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the industrys
-                        standard dummy text ever since the 1500s, when an
-                        unknown printer took a galley of type and scrambled it
-                        to make a type specimen book.
-                      </ContextBoxBody>
-                    </ContentBoxHeader>
-                  </ContentBox>
-                </SC.Row>
-              )}
-            </InView>
+            {modules.map((module: any) => (
+              <InView triggerOnce threshold={0.1}>
+                {({ inView, ref }) => (
+                  <SC.Row ref={ref} animate={inView}>
+                    <ContentBox>
+                      <ContentBoxHeader>
+                        <ContentBoxSC.ContentBoxHeader.Title>
+                          {module?.field_title}
+                        </ContentBoxSC.ContentBoxHeader.Title>
+                        <ContextBoxBody>
+                          <div
+                            // eslint-disable-next-line react/no-danger
+                            dangerouslySetInnerHTML={{
+                              __html: convertToSanitizedHtml(
+                                module?.field_body?.processed
+                              )
+                            }}
+                          />
+                        </ContextBoxBody>
+                      </ContentBoxHeader>
+                    </ContentBox>
+                  </SC.Row>
+                )}
+              </InView>
+            ))}
             <InView triggerOnce threshold={0.1}>
               {({ inView, ref }) => (
                 <SC.NewsRow ref={ref} animate={inView}>
@@ -146,4 +140,4 @@ const MainPage: FC<Props> = ({
   );
 };
 
-export default compose<FC>(memo, withNews)(MainPage);
+export default compose<FC>(memo, withNews, withPage)(MainPage);
