@@ -4,7 +4,8 @@ export enum PATHNAME {
   DATASETS = '/sok-datasett',
   ABOUT = '/om-datafabrikken',
   NEWS = '/siste-nytt',
-  DATA_COMMUNITY = '/datalandsbyen'
+  DATA_COMMUNITY = '/datalandsbyen',
+  DATA_SOURCES = '/datakilder'
 }
 
 export enum PARAGRAPH {
