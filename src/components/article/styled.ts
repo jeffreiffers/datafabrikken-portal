@@ -30,9 +30,21 @@ const Ingress = styled.p`
   margin-bottom: ${theme.spacing('S16')};
 `;
 
-const Body = styled.p`
+const Body = styled.div`
   font-size: ${theme.fontSize('FS12')};
   margin-bottom: ${theme.spacing('S10')};
+  & > h2 {
+    font-size: ${theme.fontSize('FS16')};
+    margin-bottom: ${theme.spacing('S10')};
+  }
+  & > h3,
+  h4 {
+    font-size: ${theme.fontSize('FS14')};
+    margin-bottom: ${theme.spacing('S10')};
+  }
+  & > p {
+    margin-bottom: ${theme.spacing('S10')};
+  }
 `;
 
 const Quote = styled.div`
