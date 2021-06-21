@@ -9,5 +9,8 @@ export const articleIds: { [pathname: string]: { [key: string]: string } } = {
   },
   [`${PATHNAME.FIND_DATA}${PATHNAME.DATA_SOURCES}`]: {
     nb: 'e15dd9b8-4bde-49d8-90a1-2a2ca372e37b'
+  },
+  [`${PATHNAME.FIND_DATA}${PATHNAME.GUIDEANCE_AND_COMPETENCE}`]: {
+    nb: '7333da4c-2ffe-46b0-acf3-7452949ebae6'
   }
 };

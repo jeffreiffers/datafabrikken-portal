@@ -15,7 +15,10 @@ const routes = {
   [PATHNAME.NEWS]: lazy(() => import('./pages/news-page')),
   NEWS_ARTICLE: lazy(() => import('./pages/news-article-page')),
   [PATHNAME.DATA_COMMUNITY]: lazy(() => import('./pages/article-page')),
-  [PATHNAME.DATA_SOURCES]: lazy(() => import('./pages/article-page'))
+  [PATHNAME.DATA_SOURCES]: lazy(() => import('./pages/article-page')),
+  [PATHNAME.GUIDEANCE_AND_COMPETENCE]: lazy(
+    () => import('./pages/article-page')
+  )
 };
 
 const Router: FC = () => (
@@ -39,6 +42,11 @@ const Router: FC = () => (
           exact
           path={`${PATHNAME.FIND_DATA}${PATHNAME.DATA_SOURCES}`}
           component={routes[PATHNAME.DATA_SOURCES]}
+        />
+        <Route
+          exact
+          path={`${PATHNAME.FIND_DATA}${PATHNAME.GUIDEANCE_AND_COMPETENCE}`}
+          component={routes[PATHNAME.GUIDEANCE_AND_COMPETENCE]}
         />
         <Route exact path={PATHNAME.NEWS} component={routes[PATHNAME.NEWS]} />
         <Route
