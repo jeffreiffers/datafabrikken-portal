@@ -18,7 +18,8 @@ const routes = {
   [PATHNAME.DATA_SOURCES]: lazy(() => import('./pages/article-page')),
   [PATHNAME.GUIDEANCE_AND_COMPETENCE]: lazy(
     () => import('./pages/article-page')
-  )
+  ),
+  ARTICLE: lazy(() => import('./pages/article-page'))
 };
 
 const Router: FC = () => (
@@ -42,6 +43,11 @@ const Router: FC = () => (
           exact
           path={`${PATHNAME.FIND_DATA}${PATHNAME.DATA_SOURCES}`}
           component={routes[PATHNAME.DATA_SOURCES]}
+        />
+        <Route
+          exact
+          path={`${PATHNAME.FIND_DATA}${PATHNAME.DATA_SOURCES}${PATHNAME.PRIVATE_SECTOR}`}
+          component={routes.ARTICLE}
         />
         <Route
           exact

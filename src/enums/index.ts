@@ -6,7 +6,8 @@ export enum PATHNAME {
   NEWS = '/siste-nytt',
   DATA_COMMUNITY = '/datalandsbyen',
   DATA_SOURCES = '/datakilder',
-  GUIDEANCE_AND_COMPETENCE = '/veiledere-og-kompetanse'
+  GUIDEANCE_AND_COMPETENCE = '/veiledere-og-kompetanse',
+  PRIVATE_SECTOR = '/privat-sektor'
 }
 
 export enum PARAGRAPH {
