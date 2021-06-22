@@ -12,6 +12,7 @@ import {
   ContextBoxBody,
   SC as ContentBoxSC
 } from '../../../../../components/content-box';
+import Link, { Variant } from '../../../../../components/link';
 import {
   InfoBox,
   InfoBoxBody,
@@ -74,13 +75,25 @@ const MainPage: FC<Props> = ({
                       )
                     }}
                   />
+                  {firstElement?.field_link && (
+                    <Link
+                      variant={Variant.PRIMARY}
+                      as={RouterLink}
+                      to={firstElement?.field_link?.uri.replace(
+                        'internal:',
+                        ''
+                      )}
+                    >
+                      {firstElement?.field_link?.title}
+                    </Link>
+                  )}
                 </ContextBoxBody>
               </ContentBox>
             </SC.Row>
           </SC.Banner>
           <SC.MainContent>
             {modules.map((module: any) => (
-              <InView triggerOnce threshold={0.1}>
+              <InView key={module.id} triggerOnce threshold={0.1}>
                 {({ inView, ref }) => (
                   <SC.Row ref={ref} animate={inView}>
                     <ContentBox>
@@ -97,6 +110,17 @@ const MainPage: FC<Props> = ({
                               )
                             }}
                           />
+                          {module?.field_link && (
+                            <Link
+                              as={RouterLink}
+                              to={module?.field_link?.uri.replace(
+                                'internal:',
+                                ''
+                              )}
+                            >
+                              {module?.field_link?.title}
+                            </Link>
+                          )}
                         </ContextBoxBody>
                       </ContentBoxHeader>
                     </ContentBox>
