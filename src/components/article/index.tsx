@@ -59,7 +59,7 @@ export const renderModule = (module: any) => {
           <InfoBoxTitle>
             <h2>{module.field_link?.title}</h2>
           </InfoBoxTitle>
-          <InfoBoxBody>
+          <InfoBoxBody truncate={false}>
             <div
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
