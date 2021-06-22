@@ -13,6 +13,7 @@ const onMobileView = '@media (max-width: 900px)';
 const ContentBoxHeader = styled.h2`
   font-size: ${theme.fontSize('FS28')};
   line-height: 1.3;
+  margin-bottom: ${theme.spacing('S2')};
   word-break: break-word;
   ${onMobileView} {
     font-size: ${theme.fontSize('FS18')};
