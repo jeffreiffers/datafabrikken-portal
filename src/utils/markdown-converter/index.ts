@@ -6,7 +6,10 @@ import showdown from 'showdown';
 const showDownConverter = new showdown.Converter({ headerLevelStart: 2 });
 
 const sanitizerConfig = {
-  allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])
+  allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
+  allowedClasses: {
+    a: ['arrow']
+  }
 };
 
 export function convertToSanitizedHtml(markdownContent: string) {
