@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import ContainerSC from '../container/styled';
 
-import { theme, Colour } from '../../entrypoints/main/app/theme';
+import { Colour, theme, Unit } from '../../entrypoints/main/app/theme';
 
 const Article = styled.article`
   line-height: 1.5;
@@ -44,6 +44,17 @@ const Body = styled.div`
   }
   & > p {
     margin-bottom: ${theme.spacing('S10')};
+    & > a.arrow {
+      align-items: center;
+      border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B14')};
+      display: inline-flex;
+      &:after {
+        font-family: 'Material Icons';
+        content: '\\e5c8';
+        font-size: ${theme.fontSize('FS12', Unit.EM)};
+        margin-left: ${theme.spacing('S4')};
+      }
+    }
   }
 `;
 

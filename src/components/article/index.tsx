@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { PARAGRAPH } from '../../enums';
 import {
   getParagraphBodyProcessed,
+  getParagraphBodyValue,
   getParagraphImage
 } from '../../utils/drupal-values';
 import { convertToSanitizedHtml } from '../../utils/markdown-converter';
@@ -27,7 +28,7 @@ export const renderModule = (module: any) => {
           key={module.id}
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
-            __html: convertToSanitizedHtml(getParagraphBodyProcessed(module))
+            __html: convertToSanitizedHtml(getParagraphBodyValue(module))
           }}
         />
       );
