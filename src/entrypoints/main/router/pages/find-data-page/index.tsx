@@ -27,12 +27,8 @@ export const renderModule = (module: any) => {
   switch (module.type) {
     case PARAGRAPH.INFO_BOX: {
       const infoBoxUrl = module?.field_link?.uri?.replace('internal:', '');
-      // eslint-disable-next-line no-console
-      console.log('infoUrl', infoBoxUrl);
       const r = new RegExp('^(?:[a-z]+:)?//', 'i');
       const isAbsoluteUrl = r.test(infoBoxUrl) ?? false;
-      // eslint-disable-next-line no-console
-      console.log('isAbsoluteUrl', isAbsoluteUrl);
       return (
         <InfoBox
           key={module.id}
