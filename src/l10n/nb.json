@@ -30,5 +30,10 @@
   "news": {
     "title": "Siste nytt om Datafabrikken"
   },
-  "owner": "Eier"
+  "owner": "Eier",
+  "openData": "Åpne data",
+  "accessRights": {
+    "limitedAccess": "Begrenset tilgang"
+  },
+  "unknown": "Ukjent"
 }

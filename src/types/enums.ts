@@ -6,3 +6,9 @@ export enum Environment {
 export enum Entity {
   DATASET = 'dataset'
 }
+
+export enum AccessRight {
+  PUBLIC = 'PUBLIC',
+  RESTRICTED = 'RESTRICTED',
+  NON_PUBLIC = 'NON_PUBLIC'
+}

@@ -31,4 +31,10 @@ const Description = styled.div`
   line-height: 1.5;
 `;
 
-export default { SearchHit, Publisher, Title, Description };
+const Tags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: ${theme.spacing('S6')};
+`;
+
+export default { SearchHit, Publisher, Title, Description, Tags };

@@ -1,3 +1,5 @@
+import { AccessRight as AccessRightEnum } from './enums';
+
 export interface TextLanguage {
   nb: string;
   nn: string;
@@ -66,7 +68,7 @@ export interface Distribution {
 }
 
 interface AccessRight {
-  code: string;
+  code: AccessRightEnum;
 }
 
 export interface Dataset {

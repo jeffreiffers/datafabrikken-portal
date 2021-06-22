@@ -59,15 +59,26 @@ const DatasetsPage: FC<Props> = ({
         <SC.Row>
           <SC.Aside />
           <SC.SearchList>
-            {datasets?.map(({ id, publisher, title, description }: any) => (
-              <SearchHit
-                key={id}
-                id={id}
-                publisher={publisher}
-                title={title}
-                description={description}
-              />
-            ))}
+            {datasets?.map(
+              ({
+                id,
+                publisher,
+                title,
+                description,
+                distribution,
+                accessRights
+              }: any) => (
+                <SearchHit
+                  key={id}
+                  id={id}
+                  publisher={publisher}
+                  title={title}
+                  description={description}
+                  distributions={distribution}
+                  accessRight={accessRights}
+                />
+              )
+            )}
             {datasets?.length > 0 && (
               <SC.Pagination>
                 <ReactPaginate
