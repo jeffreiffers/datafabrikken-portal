@@ -8,7 +8,8 @@ export enum PATHNAME {
   DATA_SOURCES = '/datakilder',
   GUIDEANCE_AND_COMPETENCE = '/veiledere-og-kompetanse',
   PRIVATE_SECTOR = '/privat-sektor',
-  CONTACT = '/kontakt'
+  CONTACT = '/kontakt',
+  LEGAL_FRAMEWORK = '/juridiske-rammer-bruk-av-data'
 }
 
 export enum PARAGRAPH {

@@ -55,6 +55,11 @@ const Router: FC = () => (
           path={`${PATHNAME.FIND_DATA}${PATHNAME.GUIDEANCE_AND_COMPETENCE}`}
           component={routes[PATHNAME.GUIDEANCE_AND_COMPETENCE]}
         />
+        <Route
+          exact
+          path={`${PATHNAME.FIND_DATA}${PATHNAME.GUIDEANCE_AND_COMPETENCE}${PATHNAME.LEGAL_FRAMEWORK}`}
+          component={routes.ARTICLE}
+        />
         <Route exact path={PATHNAME.NEWS} component={routes[PATHNAME.NEWS]} />
         <Route
           exact
