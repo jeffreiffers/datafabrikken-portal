@@ -44,9 +44,11 @@ const Body = styled.div`
   }
   & > p {
     margin-bottom: ${theme.spacing('S10')};
+    & > a {
+      border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B14')};
+    }
     & > a.arrow {
       align-items: center;
-      border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B14')};
       display: inline-flex;
       &:after {
         font-family: 'Material Icons';
