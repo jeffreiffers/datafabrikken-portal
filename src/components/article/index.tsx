@@ -9,7 +9,6 @@ import {
 } from '../../utils/drupal-values';
 import { convertToSanitizedHtml } from '../../utils/markdown-converter';
 
-import Root from '../root';
 import { Variant as ContainerVariant } from '../container';
 import { InfoBox, InfoBoxBody, InfoBoxTitle } from '../info-box';
 
@@ -81,32 +80,30 @@ const Article: FC<Props> = ({ article }) => {
   const ingress = article?.field_ingress;
   const modules = article?.field_modules;
   return (
-    <Root invertColor>
+    <SC.Article>
       <Helmet>
         <title>{title}</title>
         <meta property='og:title' content={title} />
         <meta name='description' content={ingress} />
         <meta name='og:description' content={ingress} />
       </Helmet>
-      <SC.Article>
-        <SC.Header>
-          <SC.Container variant={ContainerVariant.WIDTH_720}>
-            <SC.Title>{title}</SC.Title>
-            {ingress && (
-              <SC.Ingress
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{
-                  __html: convertToSanitizedHtml(ingress)
-                }}
-              />
-            )}
-          </SC.Container>
-        </SC.Header>
+      <SC.Header>
         <SC.Container variant={ContainerVariant.WIDTH_720}>
-          {modules?.map((module: any) => renderModule(module))}
+          <SC.Title>{title}</SC.Title>
+          {ingress && (
+            <SC.Ingress
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: convertToSanitizedHtml(ingress)
+              }}
+            />
+          )}
         </SC.Container>
-      </SC.Article>
-    </Root>
+      </SC.Header>
+      <SC.Container variant={ContainerVariant.WIDTH_720}>
+        {modules?.map((module: any) => renderModule(module))}
+      </SC.Container>
+    </SC.Article>
   );
 };
 

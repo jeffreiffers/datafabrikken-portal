@@ -8,6 +8,7 @@ import withPage, {
 import Article from '../../../../../components/article';
 
 import { articleIds } from './articles';
+import Root from '../../../../../components/root';
 
 interface Props extends CmsArticleProps, RouteComponentProps {}
 
@@ -23,7 +24,7 @@ const ArticlePage: FC<Props> = ({
     };
   }, []);
 
-  return cmsPage ? <Article article={cmsPage} /> : null;
+  return <Root invertColor>{cmsPage && <Article article={cmsPage} />}</Root>;
 };
 
 export default compose<FC>(memo, withPage)(ArticlePage);
