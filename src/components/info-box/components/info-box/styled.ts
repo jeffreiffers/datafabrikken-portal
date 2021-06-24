@@ -12,7 +12,7 @@ type infoBoxProps = {
 const InfoBox = styled.a<infoBoxProps>`
   background-color: ${({ invertColor }) =>
     invertColor
-      ? theme.colour(Colour.NEUTRAL, 'N0')
+      ? theme.colour(Colour.NEUTRAL, 'N02')
       : theme.colour(Colour.BLUE, 'B48')};
   color: ${({ invertColor }) =>
     invertColor
