@@ -22,7 +22,7 @@ const ThemeBox = styled.div<Props>`
   background-color: ${({ checked }) =>
     checked
       ? theme.colour(Colour.BLUE, 'B20')
-      : theme.colour(Colour.BLUE, 'B44')};
+      : theme.colour(Colour.BLUE, 'B48')};
   color: ${({ checked }) =>
     checked
       ? theme.colour(Colour.NEUTRAL, 'N70')
@@ -34,7 +34,7 @@ const ThemeBox = styled.div<Props>`
     ${({ checked }) =>
       !checked &&
       css`
-        background-color: ${theme.colour(Colour.BLUE, 'B36')};
+        background-color: ${theme.colour(Colour.BLUE, 'B44')};
       `}
   }
 
