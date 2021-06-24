@@ -9,7 +9,7 @@ const onMobileView = '@media (max-width: 900px)';
 const SearchBar = styled.form`
   background-color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   display: flex;
-  flex: 1;
+  flex: 0 0 60%;
   border: 1px solid ${theme.colour(Colour.NEUTRAL, 'N70')};
   border-radius: 5px;
   align-items: center;

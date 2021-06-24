@@ -41,9 +41,12 @@ const Aside = styled.aside`
 `;
 
 const Title = styled.h1`
-  font-size: ${theme.fontSize('FS24')};
-  margin-bottom: ${theme.spacing('S20')};
+  font-size: ${theme.fontSize('FS32')};
+  margin-bottom: ${theme.spacing('S6')};
   text-align: center;
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS24')};
+  }
 `;
 
 const AsideTitle = styled.div`
@@ -60,8 +63,10 @@ const SearchList = styled.section`
 `;
 
 const SearchContainer = styled.div`
-  flex: 0 0 80%;
-  margin-bottom: ${theme.spacing('S20')};
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  margin-bottom: ${theme.spacing('S24')};
   padding: 0 ${theme.spacing('S10')};
 `;
 
@@ -108,6 +113,9 @@ const Pagination = styled.div`
     & > li.active > a {
       background-color: ${theme.colour(Colour.BLUE, 'B36')};
     }
+  }
+  ${onMobileView} {
+    font-size: 0.7rem;
   }
 `;
 

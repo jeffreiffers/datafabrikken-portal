@@ -97,7 +97,7 @@ const DatasetsPage: FC<Props> = ({
   return (
     <Root>
       <SC.Container>
-        <SC.Title>Finn offentlige data</SC.Title>
+        <SC.Title>Søk etter datasett</SC.Title>
         <SC.Row reverse>
           <SC.SearchContainer>
             <SearchBar placeholder='Søk her' onSubmit={searchSubmit} />
