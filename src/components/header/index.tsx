@@ -17,7 +17,7 @@ const Header: FC<Props> = () => (
     <SC.BetaIcon />
     <SC.Nav role='navigation'>
       <SC.Logo href='/'>
-        <Translation id='title' />.
+        <Translation id='title' />
       </SC.Logo>
       <SC.NavigationLinks>
         <li>
