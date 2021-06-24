@@ -100,7 +100,10 @@ const DatasetsPage: FC<Props> = ({
         <SC.Title>Søk etter datasett</SC.Title>
         <SC.Row reverse>
           <SC.SearchContainer>
-            <SearchBar placeholder='Søk her' onSubmit={searchSubmit} />
+            <SearchBar
+              placeholder='Søk etter datasett'
+              onSubmit={searchSubmit}
+            />
           </SC.SearchContainer>
         </SC.Row>
         <SC.Themes>
@@ -115,8 +118,8 @@ const DatasetsPage: FC<Props> = ({
             </ThemeBox>
             <ThemeBox
               handleChange={handleFilterTheme}
-              filterName='losTheme'
-              value='natur-klima-og-miljo/energi'
+              filterName='theme'
+              value='ENER'
               label='Energi'
             >
               <ThemePowerIcon />
@@ -124,7 +127,7 @@ const DatasetsPage: FC<Props> = ({
             <ThemeBox
               handleChange={handleFilterTheme}
               filterName='theme'
-              value='GOVI'
+              value='GOVE'
               label='Forvaltning og offentlig sektor'
             >
               <ThemePublicIcon />
