@@ -7,6 +7,8 @@ export { default as InfoBoxTitle } from './components/info-box-title';
 
 export { default as InfoBoxBody } from './components/info-box-body';
 
+export { default as InfoBoxIcon } from './components/info-box-icon';
+
 export const SC = {
   InfoBox: InfoBoxSC,
   InfoBoxHeader: InfoBoxTitleSC

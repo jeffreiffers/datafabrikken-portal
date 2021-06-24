@@ -12,11 +12,18 @@ import Container from '../../../../../components/container';
 import {
   InfoBox,
   InfoBoxBody,
-  InfoBoxTitle
+  InfoBoxTitle,
+  InfoBoxIcon
 } from '../../../../../components/info-box';
 import { PARAGRAPH } from '../../../../../enums';
 import { convertToSanitizedHtml } from '../../../../../utils/markdown-converter';
 
+import DatasetIcon from '../../../../../images/service-data-search.inline.svg';
+import DatasourcesIcon from '../../../../../images/service-data-sources.inline.svg';
+import CommunityIcon from '../../../../../images/service-community.inline.svg';
+import GuidanceIcon from '../../../../../images/service-guide.inline.svg';
+
+import { Entity } from './enums';
 import SC from './styled';
 
 const articleId = '8d6ed4d9-f2b9-4d24-9561-595af3876240';
@@ -24,8 +31,25 @@ const articleId = '8d6ed4d9-f2b9-4d24-9561-595af3876240';
 interface Props extends CmsArticleProps {}
 
 export const renderModule = (module: any) => {
+  const moduleIcons: Record<any, any> = {
+    [Entity.DATASETS]: {
+      icon: DatasetIcon
+    },
+    [Entity.DATASOURCES]: {
+      icon: DatasourcesIcon
+    },
+    [Entity.COMMUNITY]: {
+      icon: CommunityIcon
+    },
+    [Entity.GUIDANCE]: {
+      icon: GuidanceIcon
+    }
+  };
+
   switch (module.type) {
     case PARAGRAPH.INFO_BOX: {
+      const entity = moduleIcons[module.field_title];
+      const Icon = entity?.icon ?? undefined;
       const infoBoxUrl = module?.field_link?.uri?.replace('internal:', '');
       const r = new RegExp('^(?:[a-z]+:)?//', 'i');
       const isAbsoluteUrl = r.test(infoBoxUrl) ?? false;
@@ -36,6 +60,11 @@ export const renderModule = (module: any) => {
             ? { href: module.field_link?.uri }
             : { as: RouterLink, to: infoBoxUrl })}
         >
+          {Icon && (
+            <InfoBoxIcon>
+              <Icon />
+            </InfoBoxIcon>
+          )}
           <InfoBoxTitle>
             <h2>{module.field_link?.title}</h2>
           </InfoBoxTitle>

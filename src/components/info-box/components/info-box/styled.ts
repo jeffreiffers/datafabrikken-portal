@@ -25,7 +25,6 @@ const InfoBox = styled.a<infoBoxProps>`
         : theme.colour(Colour.NEUTRAL, 'N60')};
   display: flex;
   flex: 0 1 49%;
-  flex-direction: column;
   margin-bottom: ${theme.spacing('S20')};
   padding: ${theme.spacing('S24')};
   &:hover {
@@ -38,7 +37,30 @@ const InfoBox = styled.a<infoBoxProps>`
   }
   ${onMobileView} {
     flex-basis: 100%;
+    flex-direction: column;
   }
+`;
+
+const IconWrapper = styled.div`
+  align-items: flex-start;
+  display: flex;
+  flex: 0 0 25%;
+  padding: ${theme.spacing('S10')};
+  ${onMobileView} {
+    padding: ${theme.spacing('S10')} 0;
+  }
+  & > svg {
+    flex-basis: 90%;
+    fill: ${theme.colour(Colour.BLUE, 'B20')};
+    ${onMobileView} {
+      flex-basis: 40%;
+    }
+  }
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const Date = styled.span`
@@ -47,4 +69,4 @@ const Date = styled.span`
   margin-bottom: ${theme.spacing('S6')};
 `;
 
-export default { InfoBox, Date };
+export default { InfoBox, IconWrapper, ContentWrapper, Date };
