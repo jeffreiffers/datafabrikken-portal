@@ -31,3 +31,7 @@ export enum DataFormat {
   SIRI = 'application/x.siri',
   UNKNOWN = 'unknown'
 }
+
+export enum GoogleAnalyticsTrackingId {
+  DATAFABRIKKEN = 'G-G53K738LB2'
+}

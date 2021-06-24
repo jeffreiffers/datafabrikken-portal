@@ -9,12 +9,14 @@ import { defaultTheme as theme } from './theme';
 
 import Router from '../router';
 import TranslationsProvider from '../../../providers/translations';
+import Analytics from '../../../components/analytics';
 
 import store from '../redux/store';
 
 const App: FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyles />
+    <Analytics />
     <CookiesProvider>
       <TranslationsProvider>
         <ParallaxProvider>
